@@ -2,6 +2,12 @@
 
 <h1>HOME HTML</h1>
 
+{% if user.is_authenticated %}
+    {{ user.username }}님 환영합니다!<br><br>
+    <a href="{% url 'logout' %}">로그아웃</a><br><br>
+{% endif %}
+<hr>
+
 <a href="{% url 'new' %}">글쓰기</a>
 <hr>
 
