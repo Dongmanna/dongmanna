@@ -1,0 +1,16 @@
+<!--main/templates/detail.html-->
+
+<p>{{ post.category }}</p>
+<h2>{{ post.title }}</h2>
+모집 인원: {{ post.limit }} <br><br>
+품목: {{ post.item }} <br><br>
+{{ post.body }} <br><br>
+{% for image in post.image_set.all %}
+    <img src="{{ image.image.url }}" width="450"><br>
+{% endfor %}
+
+
+
+<a href="{% url 'home' %}">HOME</a><br>
+<a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>
+<a href="{% url 'delete' pk=post.pk %}">DELETE</a>
