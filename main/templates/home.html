@@ -1,19 +1,13 @@
-<!--main/templates/home.html-->
+{% extends 'base.html' %}
+{% block content %}
 
-<h1>HOME HTML</h1>
 
-{% if user.is_authenticated %}
-    {{ user.username }}님 환영합니다!<br><br>
-    <a href="{% url 'logout' %}">로그아웃</a><br><br>
-{% endif %}
-<hr>
-
-<a href="{% url 'new' %}">글쓰기</a>
-<hr>
-
+    <br>
+    <hr>
 {% for post in posts_list %}
     <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a><br>
     <p>{{post.pub_date}}</p>
     <p>{{post.body|linebreaks}}</p>
     <hr>
 {% endfor %}
+{% endblock %}

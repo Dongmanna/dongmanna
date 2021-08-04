@@ -2,7 +2,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post, Image
-from .forms import PostForm
+from .forms import PostForm, PostSearchForm
+from django.db.models import Q
+from django.views.generic import FormView
 
 def home(request):
     posts = Post.objects.all()
@@ -52,3 +54,20 @@ def delete(request, pk):
     post = get_object_or_404(Post, pk = pk)
     post.delete()
     return redirect('home')
+
+
+
+class SearchFormView(FormView):
+    form_class = PostSearchForm
+    template_name = 'search.html'
+
+    def form_valid(self, form):
+        searchWord = form.cleaned_data['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=searchWord) | Q(body__icontains=searchWord) | Q(deadline__icontains=searchWord)).distinct()
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = searchWord
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
