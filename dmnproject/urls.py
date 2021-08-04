@@ -6,6 +6,8 @@ import accounts.views
 # for uploading media files
 from django.conf import settings
 from django.conf.urls.static import static
+from accounts import views as accounts_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,9 +16,11 @@ urlpatterns = [
     path('detail/<int:pk>', views.detail, name="detail"),
     path('edit/<int:pk>', views.edit, name="edit"),
     path('detail/<int:pk>/delete', views.delete, name="delete"),
-
+    
     path('accounts/', include('accounts.urls')),
     path('search/', views.SearchFormView.as_view(), name='search'),
+   
+    
 ]
 
 if settings.DEBUG:
