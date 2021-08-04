@@ -16,6 +16,7 @@ urlpatterns = [
     path('detail/<int:pk>/delete', views.delete, name="delete"),
 
     path('accounts/', include('accounts.urls')),
+    path('search/', views.SearchFormView.as_view(), name='search'),
 ]
 
 if settings.DEBUG:

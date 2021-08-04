@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HOME HTML</h1>
+
+    {% if user.is_authenticated %}
+        {{ user.username }}님 환영합니다!<br><br>
+        <a href="{% url 'logout' %}">로그아웃</a><br><br>
+    {% endif %}
+
+    {% if not user.is_authenticated %}
+        <a href="{% url 'signup'%}">회원가입</a>
+        <a href="{% url 'login'%}">로그인</a>
+    {% endif %}
+
+    <style>
+        body{text-align: center;}
+    </style>
+
+    <hr>
+
+    <a href="{% url 'new' %}">글쓰기</a>
+
+
+    <form action="{% url 'search' %}" method="post"> {% csrf_token %}
+        <input type="text" name="search_word" label="Search Word">
+        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+    </form>
+    
+    {% block content %}
+    {% endblock %}
+    
+</body>
+</html>
