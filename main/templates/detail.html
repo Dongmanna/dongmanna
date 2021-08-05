@@ -9,9 +9,11 @@
     <img src="{{ image.image.url }}" width="450"><br>
 {% endfor %}
 
-<form id="post-form" method="POST" action="/chat/checkview">
+
+<!--채팅방에 입장할 수 있는 버튼-->
+<form id="post-form" method="POST" action="/chat/checkRoom/">
     {% csrf_token %}
-    <input type="hidden" name="room_name" id="room_name" value="{{ post.pk }}" />
+    <input type="hidden" name="room_number" id="room_number" value="{{ post.pk }}" />
     <input type="submit" value="채팅방 입장">
 </form>
 
