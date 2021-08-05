@@ -2,7 +2,6 @@
 from django.contrib import admin
 from django.urls import path, include
 from main import views
-import accounts.views
 # for uploading media files
 from django.conf import settings
 from django.conf.urls.static import static
@@ -17,6 +16,7 @@ urlpatterns = [
     path('search/', views.SearchFormView.as_view(), name='search'),
 
     path('accounts/', include('accounts.urls')),
+    path('chat/', include('chat.urls')),
 ]
 
 # for uploading media files
