@@ -1,0 +1,8 @@
+{% load bootstrap4 %}
+<h1>Profile Update</h1>
+
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form profile_form %}
+    <input type="submit" value="Submit"/>
+</form>

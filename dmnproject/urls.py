@@ -5,6 +5,8 @@ from main import views
 # for uploading media files
 from django.conf import settings
 from django.conf.urls.static import static
+from accounts import views as accounts_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

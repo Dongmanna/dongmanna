@@ -1,13 +1,16 @@
 # accounts/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_user_model
+from .models import Profile
+from .forms import ProfileForm
 
 def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            Profile.objects.create(user=user) #프로필 생성
             login(request, user)
             return redirect('home')
     else:
@@ -31,3 +34,21 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+def profile_update(request):
+    profile = request.user.profile
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
+        return redirect('people', request.user.username)
+    else:
+	    profile_form = ProfileForm(instance=profile)
+    return render(request, 'profile_update.html', {'profile_form':profile_form})
+
+
+def people(request, username):
+    #get_user_model() => User 클래스를 호출함
+    people = get_object_or_404(get_user_model(), username = username)
+    return render(request, 'people.html', {'people':people})

@@ -1,0 +1,28 @@
+{% load bootstrap4 %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1> 
+            {% if people.profile.image %}
+            <img src="{{ people.profile.image.url }}" width= 70, 
+                 alt="{{ people.profile.image}}">
+            {% endif %}
+            {{ people.username }}
+            </h1>
+        </div>
+        <div class="col-9">
+            <div>
+                <strong>{{ people.profile.nickname }}</strong>
+            </div>
+            <div>
+                {{ people.profile.introduction }}
+            </div>
+        </div>
+    </div>
+    
+    {% if user == people %}
+    <div>
+        <a href="{% url 'profile_update' %}">프로필 수정</a>
+    {% endif %}
+    <a href="{% url 'home' %}">홈으로 가기</a>

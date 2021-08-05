@@ -23,6 +23,8 @@ class Post(models.Model):
     link = models.URLField(max_length=300, blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
     # user_attended = models.ManyToManyField(Profile, blank=True, related_name='user_attended_post')
+    def __str__(self):
+        return self.title
 
 class Image(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
