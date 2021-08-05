@@ -29,7 +29,8 @@ def new(request):
                 image.image = img
                 image.save()  
             
-            return redirect('home')
+            # 게시글을 생성하고 곧바로 채팅방 생성을 위해 newRoom 함수로 이동
+            return redirect('chat:newRoom', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'new.html',{'form':form})

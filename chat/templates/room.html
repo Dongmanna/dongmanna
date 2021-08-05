@@ -56,7 +56,9 @@ body {
 </head>
 <body>
 
-<h2>{{room}} - DjChat</h2>
+<h2>{{room_name}}</h2>
+
+<a href="{% url 'home' %}">홈으로</a>
 
 <div id="display">
 
@@ -67,13 +69,14 @@ body {
 
 </div>
 
+<!--getMessages로 메시지를 받는 부분-->
 <script>
 $(document).ready(function(){
 
 setInterval(function(){
     $.ajax({
         type: 'GET',
-        url : "/chat/getMessages/{{room}}/",
+        url : "/chat/getMessages/{{room_number}}",
         success: function(response){
             console.log(response);
             $("#display").empty();
@@ -126,10 +129,11 @@ setInterval(function(){
     }
     </style>
 
+    <!--보낼 메시지를 입력받는 부분-->
     <form id="post-form">
         {% csrf_token %}
         <input type="hidden" name="username" id="username" value="{{username}}"/>
-        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+        <input type="hidden" name="room_number" id="room_number" value="{{room_number}}"/>
         <input type="text" name="message" id="message" width="100px" />
         <input type="submit" value="Send">
     </form>
@@ -138,16 +142,17 @@ setInterval(function(){
 
 </body>
 
+<!--send로 메시지를 보내는 부분-->
 <script type="text/javascript">
   $(document).on('submit','#post-form',function(e){
     e.preventDefault();
 
     $.ajax({
       type:'POST',
-      url:'/chat/send',
+      url:'/chat/send/',
       data:{
           username:$('#username').val(),
-          room_id:$('#room_id').val(),
+          room_number:$('#room_number').val(),
           message:$('#message').val(),
         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
       },

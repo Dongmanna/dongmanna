@@ -18,7 +18,7 @@ urlpatterns = [
     path('search/', views.SearchFormView.as_view(), name='search'),
 
     path('accounts/', include('accounts.urls')),
-    path('chat/', include('chat.urls')),
+    path('chat/', include(('chat.urls', 'chat'), namespace='chat')),
 ]
 
 # for uploading media files
