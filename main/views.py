@@ -6,6 +6,9 @@ from .forms import PostForm, PostSearchForm
 from django.db.models import Q
 from django.views.generic import FormView
 
+
+# CRUD
+
 def home(request):
     posts = Post.objects.all()
     return render(request, 'home.html', {'posts_list': posts})
@@ -56,6 +59,7 @@ def delete(request, pk):
     return redirect('home')
 
 
+# Search
 
 class SearchFormView(FormView):
     form_class = PostSearchForm
