@@ -16,12 +16,11 @@ urlpatterns = [
     path('detail/<int:pk>', views.detail, name="detail"),
     path('edit/<int:pk>', views.edit, name="edit"),
     path('detail/<int:pk>/delete', views.delete, name="delete"),
-    
-    path('accounts/', include('accounts.urls')),
     path('search/', views.SearchFormView.as_view(), name='search'),
-   
-    
+
+    path('accounts/', include('accounts.urls')),
 ]
 
+# for uploading media files
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
