@@ -1,8 +1,8 @@
+# accounts/models.py
 from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from django.conf import settings
-# Create your models here.
 
 class Profile(models.Model) :
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
