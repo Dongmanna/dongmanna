@@ -8,15 +8,15 @@
             <img src="{{ people.profile.my_image.url }}" width= 70, 
                  alt="{{ people.profile.my_image}}">
             {% endif %}
-            {{ people.username }}
+            유저 아이디:{{ people.username }}
             </h1>
         </div>
         <div class="col-9">
             <div>
-                <strong>{{ people.profile.nickname }}</strong>
+                <strong>유저 닉네임:{{ people.profile.nickname }}</strong>
             </div>
             <div>
-                {{ people.profile.introduction }}
+                지역:{{ people.profile.address }}
             </div>
         </div>
     </div>

@@ -8,14 +8,18 @@ from .forms import ProfileForm
 def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
+        
         if form.is_valid():
             user = form.save()
-            Profile.objects.create(user=user) #프로필 생성
+    
+            person = Profile.objects.create(user=user, address = request.POST['address'], nickname = request.POST['nickname']) #프로필 생성
+            person.save()
             login(request, user)
             return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form':form})
+
 
 def login_view(request):
     if request.method == "POST":
