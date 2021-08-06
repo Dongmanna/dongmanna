@@ -7,7 +7,7 @@ from accounts.models import Profile
 
 class Post(models.Model):
     objects = models.Manager()
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='author_post')
+    author = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE, related_name='author_post')
     category = models.CharField(max_length=20,
         choices=(
             ('오프라인', 'Offline'),
@@ -23,7 +23,7 @@ class Post(models.Model):
     limit = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
     link = models.URLField(max_length=300, blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
-    user_attended = models.ManyToManyField(Profile, blank=True, related_name='user_attended_post')
+    members = models.ManyToManyField(Profile, blank=True, related_name='members_post')
     
     def __str__(self):
         return self.title

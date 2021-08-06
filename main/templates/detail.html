@@ -10,12 +10,40 @@
 {% endfor %}
 
 
+<!--공구 참여 버튼-->
+<hr>
+<div >공구 참여자 수 : {{ post.members.count }}/{{ post.limit }}</div>
+
+<p>
+    참여자: <br>    
+    {% for u in post.members.all %}
+        <b>-{{u}}</b><br>
+    {% endfor %}
+</p>
+
+<!--로그인이 되어있고, 글쓴이를 제외한 유저들에게만 보이게 함-->
+{% if user.is_authenticated and user.profile != post.author %}
+<a href="{% url 'post_participated_toggle' post.pk %}" class="btn btn-outline-success mr-5">
+    {% if user.profile in post.members.all %}
+        취소
+    {% elif post.members.count >= post.limit%}
+        모집 완료
+    {% else %}
+        공구 참여하기
+    {% endif %}
+</a>
+{% endif %}
+
 <!--채팅방에 입장할 수 있는 버튼-->
+{% if user.profile in post.members.all %}
 <form id="post-form" method="POST" action="/chat/checkRoom/">
     {% csrf_token %}
     <input type="hidden" name="room_number" id="room_number" value="{{ post.pk }}" />
     <input type="submit" value="채팅방 입장">
 </form>
+{% endif %}
+
+<hr>
 
 <a href="{% url 'home' %}">HOME</a><br>
 <a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>

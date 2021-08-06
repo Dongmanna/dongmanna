@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-3">
             <h1> 
-            {% if people.profile.image %}
-            <img src="{{ people.profile.image.url }}" width= 70, 
-                 alt="{{ people.profile.image}}">
+            {% if people.profile.my_image %}
+            <img src="{{ people.profile.my_image.url }}" width= 70, 
+                 alt="{{ people.profile.my_image}}">
             {% endif %}
             {{ people.username }}
             </h1>
