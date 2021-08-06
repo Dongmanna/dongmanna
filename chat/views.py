@@ -6,8 +6,14 @@ from django.http import HttpResponse, JsonResponse
 
 # 채팅방에 입장하기 위해 username, room_details를 받아 room.html로 넘겨준다
 def room(request, room_number):
-    username = request.user.username
+    post = get_object_or_404(Post, pk=room_number)
+    username = request.user.profile.nickname
     room_details = Room.objects.get(number=room_number)
+
+    # 공구 참여자가 아니면 채팅방에 들어갈 수 없도록 함
+    if not post.members.filter(user=request.user).exists():
+        return redirect('detail', pk=room_number)
+
     return render(request, 'room.html', {
         'username': username,
         'room_number': room_number,
@@ -21,7 +27,7 @@ def newRoom(request, pk):
     if not Room.objects.filter(post=post).exists():
         new_room = Room.objects.create(post=post, number=pk)
         new_room.save()
-    return redirect('chat:room', room_number=pk)
+    return redirect('detail', pk=pk)
 
 # 내가 입장하려는 채팅방을 찾아줌
 def checkRoom(request):
@@ -38,7 +44,7 @@ def checkRoom(request):
 # message 전송
 def send(request):
     message = request.POST['message']
-    username = request.user.username
+    username = request.user.profile.nickname
     room_number = request.POST['room_number']
     room_details = Room.objects.get(number=room_number)
 

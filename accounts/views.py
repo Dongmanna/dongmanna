@@ -44,7 +44,7 @@ def profile_update(request):
             profile_form.save()
         return redirect('people', request.user.username)
     else:
-	    profile_form = ProfileForm(instance=profile)
+        profile_form = ProfileForm(instance=profile)
     return render(request, 'profile_update.html', {'profile_form':profile_form})
 
 

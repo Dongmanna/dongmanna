@@ -4,4 +4,4 @@ from django import forms
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['nickname', 'introduction', 'image',]
+        fields = ['nickname', 'my_image']

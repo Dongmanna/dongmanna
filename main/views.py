@@ -5,7 +5,7 @@ from .models import Post, Image
 from .forms import PostForm, PostSearchForm
 from django.db.models import Q
 from django.views.generic import FormView
-
+from django.contrib.auth.decorators import login_required
 
 # CRUD
 
@@ -18,9 +18,12 @@ def new(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.author = request.user.profile
             post.published_date = timezone.now()
             post.save()
+            # 게시글을 작성하면 자동으로 공구에 참여
+            post.members.add(post.author)
+            post.author.post_participated.add(post)
 
             # for images
             for img in request.FILES.getlist('imgs'):
@@ -45,7 +48,7 @@ def edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.author = request.user.profile
             post.published_date = timezone.now
             post.save()
             return redirect('detail', pk=post.pk)
@@ -76,3 +79,29 @@ class SearchFormView(FormView):
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context)
+
+
+# 공구 참여
+@login_required
+def post_participated_toggle(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    profile = request.user.profile
+
+    # 글쓴이는 공구 참여/취소 버튼을 누를 필요가 없으므로 detail 페이지로 redirect
+    if profile == post.author:
+        return redirect('detail', pk)
+
+    check_participated_post = profile.post_participated.filter(pk=pk)
+
+    # 공구에 이미 참여중인 경우 공구 취소 버튼이 작동
+    if check_participated_post.exists():
+        post.members.remove(profile)
+        profile.post_participated.remove(post)
+        post.save()
+    # 공구에 아직 참여하지 않았고 모집인원이 남아있는 경우 공구 참여 버튼이 작동
+    elif post.members.count() < post.limit:
+        post.members.add(profile)
+        profile.post_participated.add(post)
+        post.save()
+
+    return redirect('detail', pk)
