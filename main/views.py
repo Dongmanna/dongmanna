@@ -71,6 +71,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
+        
         post_list = Post.objects.filter(Q(title__icontains=searchWord) | Q(body__icontains=searchWord) | Q(deadline__icontains=searchWord)).distinct()
 
         context = {}
@@ -105,3 +106,4 @@ def post_participated_toggle(request, pk):
         post.save()
 
     return redirect('detail', pk)
+

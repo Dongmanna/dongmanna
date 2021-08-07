@@ -5,6 +5,9 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from accounts.models import Profile
 
+
+
+
 class Post(models.Model):
     objects = models.Manager()
     author = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE, related_name='author_post')
@@ -31,3 +34,4 @@ class Post(models.Model):
 class Image(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
+
