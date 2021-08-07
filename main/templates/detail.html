@@ -16,8 +16,8 @@
 
 <p>
     참여자: <br>    
-    {% for u in post.members.all %}
-        <b>-{{u}}</b><br>
+    {% for member in post.members.all %}
+        <b>-{{member}}</b><br>
     {% endfor %}
 </p>
 

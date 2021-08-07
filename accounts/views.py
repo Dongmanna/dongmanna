@@ -5,15 +5,17 @@ from django.contrib.auth import login, logout, authenticate, get_user_model
 from .models import Profile
 from .forms import ProfileForm
 
+
 def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
-        
         if form.is_valid():
+            # user 저장
             user = form.save()
-    
-            person = Profile.objects.create(user=user, address = request.POST['address'], nickname = request.POST['nickname']) #프로필 생성
+            # profile 생성
+            person = Profile.objects.create(user=user, address=request.POST['address'], nickname=request.POST['nickname'])
             person.save()
+            # 자동 login
             login(request, user)
             return redirect('home')
     else:
@@ -35,24 +37,25 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})
 
+
 def logout_view(request):
     logout(request)
     return redirect('login')
 
 
-def profile_update(request):
+def edit_profile(request):
     profile = request.user.profile
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
         if profile_form.is_valid():
             profile_form.save()
-        return redirect('people', request.user.username)
+        return redirect('profile', request.user.username)
     else:
         profile_form = ProfileForm(instance=profile)
-    return render(request, 'profile_update.html', {'profile_form':profile_form})
+    return render(request, 'edit_profile.html', {'profile_form':profile_form})
 
 
-def people(request, username):
+def profile(request, username):
     #get_user_model() => User 클래스를 호출함
-    people = get_object_or_404(get_user_model(), username = username)
-    return render(request, 'people.html', {'people':people})
+    user_info = get_object_or_404(get_user_model(), username = username)
+    return render(request, 'profile.html', {'user_info':user_info})
