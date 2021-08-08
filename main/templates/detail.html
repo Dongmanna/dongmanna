@@ -1,13 +1,14 @@
 <!--main/templates/detail.html-->
-
+{% load bootstrap4 %}
 <p>{{ post.category }}</p>
 <h2>{{ post.title }}</h2>
 모집 인원: {{ post.limit }} <br><br>
 품목: {{ post.item }} <br><br>
 {{ post.body }} <br><br>
-{% for image in post.image_set.all %}
-    <img src="{{ image.image.url }}" width="450"><br>
-{% endfor %}
+
+<!-- {% if post.image %} -->
+    <img src="{{ post.image.url }}" ><br>
+<!-- {% endif %} -->
 
 
 <!--공구 참여 버튼-->

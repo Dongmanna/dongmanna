@@ -1,8 +1,8 @@
 <!--main/templates/edit.html-->
 
-<form method="POST">
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">글 수정하기</button>
-</form>
+    </form>
