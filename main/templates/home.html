@@ -3,6 +3,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<form action="{% url 'search' %}" method="post"> {% csrf_token %}
+    <input type="text" name="search_word" label="Search Word">
+    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+</form>
+
 
     <br>
     <hr>

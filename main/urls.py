@@ -12,4 +12,5 @@ urlpatterns = [
     path('detail/<int:pk>/delete', views.delete, name="delete"),
     path('search/', views.SearchFormView.as_view(), name="search"),
     path('participated/<int:pk>/', views.post_participated_toggle, name="post_participated_toggle"),
+    
 ]
