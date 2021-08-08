@@ -37,7 +37,7 @@ def send(request):
     room_details = Room.objects.get(number=room_number)
 
     # 메시지 object 생성
-    new_message = Message.objects.create(room=room_details, value=message, user=username)
+    new_message = Message.objects.create(room=room_details, value=message, username=username)
     new_message.save()
     return HttpResponse('Message sent successfully')
 

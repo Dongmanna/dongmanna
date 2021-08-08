@@ -14,6 +14,7 @@ def home(request):
     return render(request, 'home.html', {'posts_list': posts, 'category': 'all'})
 
 
+# category별 게시글 확인
 def home_category(request, category):
     posts = Post.objects.all().filter(category=category)
     return render(request, 'home.html', {'posts_list': posts, 'category': category})

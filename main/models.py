@@ -19,9 +19,8 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
-    # region = models.CharField(max_length=50)
+    region = models.CharField(max_length=50)
     item = models.CharField(max_length=50)
-    # 일단은 모집인원 최소 1명 최대 10명으로 설정해놓음
     limit = models.PositiveIntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
     link = models.URLField(max_length=300, blank=True, null=True)
