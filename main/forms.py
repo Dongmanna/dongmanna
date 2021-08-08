@@ -10,4 +10,5 @@ class PostForm(forms.ModelForm):
 
 
 class PostSearchForm(forms.Form):
+    category = forms.CharField(label='Category')
     search_word = forms.CharField(label='Search Word')

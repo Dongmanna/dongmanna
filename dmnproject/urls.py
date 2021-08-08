@@ -11,7 +11,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('accounts/', include('accounts.urls')),
     path('chat/', include(('chat.urls', 'chat'), namespace='chat')),
-    path('category/', include('category.urls')),
 ]
 
 # for uploading media files

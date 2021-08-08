@@ -12,9 +12,9 @@ class Post(models.Model):
                                on_delete=models.CASCADE, related_name='author_post')
     category = models.CharField(max_length=20,
                                 choices=(
-                                    ('오프라인', 'Offline'),
-                                    ('온라인', 'Online'),
-                                    ('배달음식', 'Delivery'),
+                                    ('Offline', '오프라인'),
+                                    ('Online', '온라인'),
+                                    ('Delivery', '배달음식'),
                                 ))
     title = models.CharField(max_length=150)
     pub_date = models.DateTimeField(default=timezone.now)
