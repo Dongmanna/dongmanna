@@ -42,7 +42,7 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-
+ 
 def edit_profile(request):
     profile = request.user.profile
     if request.method == 'POST':
