@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'TTTogether';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	box-sizing: border-box; 
+    background-color: #fefdf3; 
+    font-family:  'S-CoreDream-5Medium';
+}
+/* login 페이지 */
+.login-title{
+    font-family: 'TTTogether' ;
+    color: #156917;
+    font-size: 40px;
+ 
+    
+}
+.login-container{
+    display: flex;
+    height: 80vh;
+    width: 70vw;
+    margin-bottom: 1000px;
+    border-radius: 5px;
+    box-shadow: dimgray;
+}
+.description{
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+    border: solid rgb(232, 241, 181);
+    border-radius: 4px 0 0 4px;
+    position: relative;
+}
+.description .carousel{
+    display: flex;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.4s;
+    
+}
+.prev{
+    float: left;
+    z-index: 1;
+    height: 80vh;
+    position: absolute;
+    left:0;
+    
+    opacity:0;
+    width: 20%;
+}
+.next{
+    float: left;
+    height: 80vh;
+    z-index: 1;
+    position: absolute;
+    right:0;
+    opacity:0;
+    width: 20%;
+}
+
+.login-main img{
+    width: 100%;    
+    height: 80vh;
+    margin-right: 5px;
+}
+
+ /* 오른쪽 내용 */
+.right-box{
+    background-color:  rgb(232, 241, 181);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    border-radius: 0 4px 100px 0;
+}
+
+.login-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:  rgb(232, 241, 181);
+    width: 60%;
+}
+.login-col h2{
+    background-color:  rgb(232, 241, 181);
+    color:#fff;
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+
+.login-box{
+    border-radius:2px;
+    width: 100%;
+    height: 40%;
+    margin-bottom: 60%;
+    padding: 30px;
+    position:relative;
+}
+
+
+
+
+input{
+    margin: 15px 12.5% 0px 12.5% ;
+    height: 30px;
+    width: 75%;
+    border: 2.7px solid rgb(232, 241, 181);
+    border-radius: 3px;
+    background-color: #fefdf3;
+    
+
+}
+input:focus{
+    border: 2px solid #156917;
+    outline:0;
+}
+input::placeholder{
+    color: rgb(232, 241, 181);
+}
+button{
+    background-color: #fefdf3;
+    border: solid rgb(232, 241, 181);
+    border-radius: 2px;
+    color: rgb(232, 241, 181);
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+    width: 70px;
+    height: 30px;
+}
+button:active{
+    box-shadow: 1px 1px;
+}
+
+.button-container{
+    background-color:inherit;
+    display: flex;
+    justify-content: space-around;
+    margin-top:30px;
+
+}
+
+
+
+
+.login-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}

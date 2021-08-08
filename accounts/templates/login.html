@@ -1,9 +1,63 @@
-<h1>Login</h1>
+{% load static %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">submit</button>
-</form>
 
-<a href="{% url 'signup' %}">회원가입</a>
+
+<!-- ////////////////////////////////// -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Login</title>
+    
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+</head>
+<body>
+    <main class = "login-main">
+        <h1 class="login-title"> 동네에서 만나요</h1>
+        <div class = "login-container">
+            <div class = "description">
+                <button class="prev" type="button" >prev</button> 
+                <button class="next" type="button" >next</button>
+                <div class="carousel">
+                    <img src="{% static 'accounts/img/login1.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login2.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login3.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login4.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login5.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login6.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login7.png' %}" alt="">
+                    <img src="{% static 'accounts/img/login8.png' %}" alt="">
+                </div>
+            </div>
+
+            <div class = "right-box">
+                <div class="margin"></div>
+                <div class="login-col">
+                    <h2>Login</h2>
+                    <div class="login-box">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="ID">
+                            <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
+                            <div class="button-container">
+                                <a href="{% url 'signup' %}"><button type="button">회원가입</button></a> <button type="submit">로그인</button>
+                            </div>
+                            
+                        </form>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="margin"></div>
+                
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="{% static 'accounts/js/login.js' %}"></script>
+</body>
+</html>
