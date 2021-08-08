@@ -5,7 +5,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from accounts.models import Profile
 from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFit
 
 class Post(models.Model):
     objects = models.Manager()
@@ -26,16 +26,15 @@ class Post(models.Model):
         default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
     link = models.URLField(max_length=300, blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
-
     members = models.ManyToManyField(Profile, blank=True, related_name='members_post')
     image = ProcessedImageField(
     		blank = True,
         	upload_to = 'post/images',
-        	processors = [ResizeToFill(300, 300)],
+        	processors = [ResizeToFit(300, 300)],
         	format = 'JPEG',
         	options = {'quality':90},
-    
     		)
+
     def __str__(self):
         return self.title
 

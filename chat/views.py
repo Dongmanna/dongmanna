@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from chat.models import Room, Message
 from main.models import Post
 from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 # 채팅방에 입장하기 위해 username, room_details를 받아 room.html로 넘겨준다
+@login_required
 def room(request, room_number):
     post = get_object_or_404(Post, pk=room_number)
     username = request.user.profile.nickname
@@ -21,6 +23,7 @@ def room(request, room_number):
     })
 
 # 게시글을 작성하면 연결된 새로운 채팅방 생성
+@login_required
 def newRoom(request, pk):
     post = get_object_or_404(Post, pk = pk)
     

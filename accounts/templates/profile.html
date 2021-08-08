@@ -20,7 +20,16 @@
             </div>
         </div>
     </div>
-    
+
+    <hr>
+    <h2>내가 참여한 공동구매</h2>
+    {% for post in posts_list %}
+        <h3><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h3>
+        <p>{{post.pub_date}}</p>
+        <p>{{post.body|linebreaks}}</p>
+        <hr>
+    {% endfor %}
+
     {% if user == user_info %}
     <div>
         <a href="{% url 'edit_profile' %}">프로필 수정</a>
