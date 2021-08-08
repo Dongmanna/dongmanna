@@ -21,6 +21,14 @@
         
     {% endif %}
 
+    <br><br>
+    <h3>카테고리</h3>
+
+    <a href="{% url 'home'%}">전체글</a>
+    <a href="{% url 'offline_category'%}">오프라인</a>
+    <a href="{% url 'online_category'%}">온라인</a>
+    <a href="{% url 'delivery_category'%}">배달</a>
+
     <style>
         body{text-align: center;}
     </style>
@@ -29,12 +37,19 @@
 
     <a href="{% url 'new' %}">글쓰기</a>
 
+    <hr><br>
 
-    <form action="{% url 'search' %}" method="post"> {% csrf_token %}
+
+    <!-- <form action="{% url 'search' %}" method="post"> {% csrf_token %}
         <input type="text" name="search_word" label="Search Word">
         <input type="submit" value="Submit" class="btn btn-primary btn-sm">
     </form>
+     -->
+
     
+     
+
+
     {% block content %}
     {% endblock %}
     

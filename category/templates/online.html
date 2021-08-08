@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="{% url 'search' %}" method="post"> {% csrf_token %}
+<form action="{% url 'search_on' %}" method="post"> {% csrf_token %}
     <input type="text" name="search_word" label="Search Word">
     <input type="submit" value="Submit" class="btn btn-primary btn-sm">
 </form>
@@ -21,5 +21,12 @@
     <b><i>Search Word({{ search_term }}) Not Found</i></b>
 
 {% endif %}
-{% endblock %}
 
+    {% for post in posts %}
+        <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a><br>
+        <p>{{post.pub_date}}</p>
+        <p>{{post.body|linebreaks}}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
