@@ -6,6 +6,7 @@ from .forms import PostForm, PostSearchForm
 from django.db.models import Q
 from django.views.generic import FormView
 from django.contrib.auth.decorators import login_required
+from chat.views import sendNotice
 
 # CRUD
 
@@ -121,13 +122,16 @@ def post_participated_toggle(request, pk):
 
     # 공구에 이미 참여중인 경우 공구 취소 버튼이 작동
     if check_participated_post.exists():
+        sendNotice(profile.nickname + "님이 채팅방을 나갔습니다. (%d/%d)"%(post.members.count()-1, post.limit), pk)
         post.members.remove(profile)
         profile.post_participated.remove(post)
         post.save()
+        return redirect('detail', pk)
     # 공구에 아직 참여하지 않았고 모집인원이 남아있는 경우 공구 참여 버튼이 작동
     elif post.members.count() < post.limit:
+        sendNotice(profile.nickname + "님이 채팅방에 입장했습니다. (%d/%d)"%(post.members.count()+1, post.limit), pk)
         post.members.add(profile)
         profile.post_participated.add(post)
         post.save()
-
-    return redirect('detail', pk)
+        # 공구 참여버튼을 누르면 바로 채팅방으로 이동
+        return redirect('chat:room', room_number=pk)
