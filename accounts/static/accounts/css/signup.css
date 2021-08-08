@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'TTTogether';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	box-sizing: border-box; 
+    /* font-family: 'S-CoreDream-5Medium'; */
+    
+}
+body{
+    background-color: #fefdf3;
+}
+.big-box{
+    display: flex;
+    overflow: hidden;
+    height: 70vh;
+    position:relative;
+    width: 30%;
+    margin: 10vh 35vw 0 35vw;
+    background-color: #fff;
+    border: dotted rgb(232, 241, 181);
+}
+form{
+    display: flex;
+    
+    transition: transform 0.4s;
+    
+}
+.first{
+    height: 70vh;
+    width: 30vw;
+    background-color: inherit;
+    padding: 40px;
+}
+h4{
+    color: rgba(37, 37, 37, 0.336)
+}
+
+.next{
+    margin-left: 20px;
+}
+input{
+    margin: 15px 0 0px 0 ;
+    width: 230px;
+    height: 40px;
+    border: 2.7px solid rgb(232, 241, 181);
+    border-radius: 3px;
+    background-color: #fff;
+    
+
+}
+input:focus{
+    border: 2px solid #156917;
+    outline:0;
+}
+input::placeholder{
+    color: rgb(232, 241, 181);
+}
+button{
+    background-color: #fff;
+    border: solid rgb(232, 241, 181);
+    border-radius: 2px;
+    color: rgb(232, 241, 181);
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+}
+button:active{
+    box-shadow: 1px 1px;
+}
+.second{
+    height: 70vh;
+    width: 30vw;
+    background-color: inherit;
+    padding: 40px;
+}
+.third{
+    height: 70vh;
+    width: 30vw;
+    background-color: inherit;
+    padding: 40px;
+}
+.fourth{
+    height: 70vh;
+    width: 30vw;
+    background-color: inherit;
+    padding: 40px;
+    text-align: center;
+}
+
