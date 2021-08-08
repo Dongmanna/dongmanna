@@ -20,6 +20,7 @@ def home_category(request, category):
     return render(request, 'home.html', {'posts_list': posts, 'category': category})
 
 
+@login_required
 def new(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -27,12 +28,12 @@ def new(request):
             post = form.save(commit=False)
             post.author = request.user.profile
             post.published_date = timezone.now()
+            post.region = request.user.profile.address
             post.save()
+
             # 게시글을 작성하면 자동으로 공구에 참여
             post.members.add(post.author)
             post.author.post_participated.add(post)
-
-            # for images
 
             # 게시글을 생성하고 곧바로 채팅방 생성을 위해 newRoom 함수로 이동
             return redirect('chat:newRoom', pk=post.pk)
@@ -48,6 +49,11 @@ def detail(request, pk):
 
 def edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
+    # 작성자만 수정할 수 있도록 함
+    if request.user != post.author.user:
+        return redirect('detail', pk=post.pk)
+
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
@@ -64,6 +70,11 @@ def edit(request, pk):
 
 def delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
+    # 작성자만 삭제할 수 있도록 함
+    if request.user != post.author.user:
+        return redirect('detail', pk=post.pk)
+
     post.delete()
     return redirect('home')
 
