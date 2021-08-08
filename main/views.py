@@ -1,7 +1,7 @@
 # main/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Post, Image
+from .models import Post
 from .forms import PostForm, PostSearchForm
 from django.db.models import Q
 from django.views.generic import FormView
@@ -33,11 +33,6 @@ def new(request):
             post.author.post_participated.add(post)
 
             # for images
-            for img in request.FILES.getlist('imgs'):
-                image = Image()
-                image.post = post
-                image.image = img
-                image.save()
 
             # 게시글을 생성하고 곧바로 채팅방 생성을 위해 newRoom 함수로 이동
             return redirect('chat:newRoom', pk=post.pk)
