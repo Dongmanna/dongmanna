@@ -1,11 +1,119 @@
-<h1>Sign Up</h1>
+{% load static %} 
 
-<form action="{% url 'signup' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p>nickname<input type="text" name="nickname"></p>
-    <p>address<input type="text" name="address"></p>
-    <button type="submit">submit</button>
+
+<!-- ////////////////////// -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+</head>
+<body>
+    <div class="big-box">
+        <div class="carousel">
+
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %}
+
+            <div class = "first">
+                <h1>아이디/비밀번호</h1>
+                <h4>아이디와 비밀번호를 입력해주세요</h4>
+                <br><br>
+                <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username" class="Id-input" placeholder="아이디를 입력해주세요">
+                <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" class="password-input" placeholder="비밀번호를 입력해주세요">
+                <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" class="password-input" placeholder="비밀번호를 확인해주세요">
+                <button type="button" class="next">다음</button>
+            </div>
+            <div class = "second">
+                <h1>닉네임</h1>
+                <h4>앞으로의 공동구매에서 사용할 닉네임을 정해주세요.</h4>
+                <br><br>
+                <input type="text" name="nickname" class="Id-input" placeholder="닉네임"> <button type="button" class="next">다음</button>
+                
+                
+            </div>
+            <div class = "third">
+                <h1>지역정보 입력</h1>
+                <h4>현재 지역정보가 자동으로 입력됩니다. <br> "확인"을 눌러서 회원가입을 완료해주세요</h4>
+                <br><br>
+                <input type="text" name="address" class="location" value=""> 
+                <button type="button" class = "next">확인</button>
+                
+            </div>
+            <div class = "fourth">
+                <br><br><br><br><br>
+                <h2>회원가입이 완료됐어요! <br> 동네에서 만나요~</h2> <br>
+                <button type = "submit">확인</button>
+            </div>
+
+            </form> 
+
+            
+
+            
+        </div>
+    </div>
+    <script src="{% static 'accounts/js/signup.js' %}"></script>
+    <script
+        type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa41ca117f2c98dd171a5c629a466b23&libraries=services"
+    ></script>
     
-</form>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                // GPS를 지원하면
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        const coords = position.coords;
+                        
+                        var geocoder = new kakao.maps.services.Geocoder();
+                        function searchAddrFromCoords(coords, callback) {
+                            // 좌표로 행정동 주소 정보를 요청합니다
+                            geocoder.coord2RegionCode(coords.longitude, coords.latitude, callback);
+                        }
+                        searchAddrFromCoords(coords, displayCenterInfo);
 
+                        function displayCenterInfo(result, status) {
+                            if (status === kakao.maps.services.Status.OK) {
+                                for (var i = 0; i < result.length; i++) {
+                                    // 행정동의 region_type 값은 'H' 이므로
+                                    if (result[i].region_type === "H") {
+                                        const address1 = result[0].region_2depth_name;
+                                        const address2 = result[0].region_3depth_name;
+                                        console.log( address1 + " "+ address2);
+                                        const input = document.querySelector(`.location`);
+                                        input.value = address1 + " " + address2;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    function (error) {
+                        console.error(error);
+                    },
+                    {
+                        enableHighAccuracy: false,
+                        maximumAge: 0,
+                        timeout: Infinity,
+                    }
+                );
+            } else {
+                alert("GPS를 지원하지 않습니다");
+            }
+        }
+        const onLocation = () => {
+            getLocation();
+        };
+        onLocation();
+
+    </script>
+    
+</body>
+</html>

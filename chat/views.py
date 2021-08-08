@@ -17,7 +17,7 @@ def room(request, room_number):
     return render(request, 'room.html', {
         'username': username,
         'room_number': room_number,
-        'room_name': room_details.post.title,
+        'room_details': room_details,
     })
 
 # 게시글을 작성하면 연결된 새로운 채팅방 생성
@@ -28,18 +28,6 @@ def newRoom(request, pk):
         new_room = Room.objects.create(post=post, number=pk)
         new_room.save()
     return redirect('detail', pk=pk)
-
-# 내가 입장하려는 채팅방을 찾아줌
-def checkRoom(request):
-    room_number = request.POST['room_number']
-    post = get_object_or_404(Post, pk = room_number)
-
-    # 찾는 채팅방이 있다면 바로 해당 url로 이동
-    if Room.objects.filter(post=post).exists():
-        return redirect('chat:room', room_number=room_number)
-    # Error: 찾는 채팅방이 없는 경우 그대로 detail 페이지로
-    else:
-        return redirect('detail', pk=room_number)
 
 # message 전송
 def send(request):

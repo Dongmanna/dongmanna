@@ -4,6 +4,7 @@
 {% block content %}
 
 <form action="{% url 'search' %}" method="post"> {% csrf_token %}
+    <input type="hidden" name="category" label="Category" value="{{category}}">
     <input type="text" name="search_word" label="Search Word">
     <input type="submit" value="Submit" class="btn btn-primary btn-sm">
 </form>
@@ -11,10 +12,16 @@
 
     <br>
     <hr>
-{% for post in posts_list %}
-    <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a><br>
-    <p>{{post.pub_date}}</p>
-    <p>{{post.body|linebreaks}}</p>
+{% if posts_list %}
+    {% for post in posts_list %}
+        <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{post.pub_date}}</p>
+        <p>{{post.body|linebreaks}}</p>
+        <hr>
+    {% endfor %}
+{% elif search_term %}<!-- 검색란이 공란인지 확인-->
+    <b><i>Search Word({{ search_term }}) Not Found</i></b>
     <hr>
-{% endfor %}
+{% endif %}
+
 {% endblock %}

@@ -32,16 +32,12 @@
     {% else %}
         공구 참여하기
     {% endif %}
-</a>
+</a><br>
 {% endif %}
 
 <!--채팅방에 입장할 수 있는 버튼-->
 {% if user.profile in post.members.all %}
-<form id="post-form" method="POST" action="/chat/checkRoom/">
-    {% csrf_token %}
-    <input type="hidden" name="room_number" id="room_number" value="{{ post.pk }}" />
-    <input type="submit" value="채팅방 입장">
-</form>
+<a href="{% url 'chat:room' room_number=post.pk %}">채팅방 입장</a><br><br>
 {% endif %}
 
 <hr>

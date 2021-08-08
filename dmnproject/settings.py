@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'chat',
-    'category',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
