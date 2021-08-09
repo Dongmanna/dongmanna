@@ -12,7 +12,11 @@ from chat.views import sendNotice
 
 def home(request):
     posts = Post.objects.all()
-    return render(request, 'home.html', {'posts_list': posts, 'category': 'all'})
+    for post in posts:
+          if post.members.count() == post.limit:
+              posts=posts.exclude(pk=post.pk)
+    posts_orderby_deadline = posts.exclude(deadline = None).order_by('deadline')
+    return render(request, 'home.html', {'posts_list': posts, 'category': 'all', 'posts_orderby_deadline': posts_orderby_deadline})
 
 
 # category별 게시글 확인
@@ -126,12 +130,10 @@ def post_participated_toggle(request, pk):
         post.members.remove(profile)
         profile.post_participated.remove(post)
         post.save()
-        return redirect('detail', pk)
     # 공구에 아직 참여하지 않았고 모집인원이 남아있는 경우 공구 참여 버튼이 작동
     elif post.members.count() < post.limit:
         sendNotice(profile.nickname + "님이 채팅방에 입장했습니다. (%d/%d)"%(post.members.count()+1, post.limit), pk)
         post.members.add(profile)
         profile.post_participated.add(post)
         post.save()
-        # 공구 참여버튼을 누르면 바로 채팅방으로 이동
-        return redirect('chat:room', room_number=pk)
+    return redirect('detail', pk)
