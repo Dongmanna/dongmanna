@@ -24,4 +24,16 @@
     <hr>
 {% endif %}
 
+<h3>마감임박 상품</h3>
+<br>
+<hr>
+
+{% for post in posts1 %}
+    <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    <p>{{post.pub_date}}</p>
+    <p>{{post.body|linebreaks}}</p>
+    <hr>
+{% endfor %}
+
+
 {% endblock %}

@@ -11,7 +11,11 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     posts = Post.objects.all()
-    return render(request, 'home.html', {'posts_list': posts, 'category': 'all'})
+    for post in posts:
+          if post.members.count() == post.limit:
+              posts=posts.exclude(pk=post.pk)
+    posts1 = posts.exclude(deadline = None).order_by('deadline')
+    return render(request, 'home.html', {'posts_list': posts, 'category': 'all','posts1':posts1})
 
 
 def home_category(request, category):
@@ -119,3 +123,10 @@ def post_participated_toggle(request, pk):
         post.save()
 
     return redirect('detail', pk)
+
+
+
+
+
+
+
