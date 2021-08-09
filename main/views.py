@@ -101,7 +101,7 @@ class SearchFormView(FormView):
         searchWord = form.cleaned_data['search_word']
 
         # 카테고리별로 보기
-        if (category := self.request.POST.get('category')) != 'all':
+        if (category := self.request.POST.get('category')) != 'All':
             posts = Post.objects.all().filter(category=category)
             post_list = posts.filter(Q(title__icontains=searchWord) | Q(
                 body__icontains=searchWord) | Q(deadline__icontains=searchWord)).distinct()
