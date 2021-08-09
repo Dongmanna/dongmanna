@@ -12,6 +12,16 @@
 
     <br>
     <hr>
+<h3>참가중인 공구 채팅방</h3>
+{% if posts_participated %}
+    {% for post in posts_participated %}
+        <h2><a href="{% url 'chat:room' room_number=post.pk %}">{{ post.title }}</a></h2>
+    {% endfor %}
+{% endif %}
+
+<br>
+<hr>
+
 {% if posts_list %}
     {% for post in posts_list %}
         <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
@@ -24,16 +34,16 @@
     <hr>
 {% endif %}
 
-<h3>마감임박 상품</h3>
-<br>
-<hr>
+{% if posts_orderby_deadline %}
+    <h3>마감임박 상품</h3>
+    <br>
 
-{% for post in posts_orderby_deadline %}
-    <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
-    <p>{{post.pub_date}}</p>
-    <p>{{post.body|linebreaks}}</p>
-    <hr>
-{% endfor %}
-
+    {% for post in posts_orderby_deadline %}
+        <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{post.pub_date}}</p>
+        <p>{{post.body|linebreaks}}</p>
+        <hr>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}

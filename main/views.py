@@ -11,17 +11,24 @@ from chat.views import sendNotice
 # CRUD
 
 def home(request):
-    posts = Post.objects.all()
-    for post in posts:
-          if post.members.count() == post.limit:
+    # 참가중인 채팅방
+    posts_participated = request.user.profile.post_participated.all
+    # 마감임박 글
+    posts_list = Post.objects.all()
+    posts = Post.objects.exclude(deadline = None)
+    for post in posts_list:
+          if post.members.count() != post.limit - 1:
               posts=posts.exclude(pk=post.pk)
-    posts_orderby_deadline = posts.exclude(deadline = None).order_by('deadline')
-    return render(request, 'home.html', {'posts_list': posts, 'category': 'all', 'posts_orderby_deadline': posts_orderby_deadline})
+    posts_orderby_deadline = posts.order_by('deadline')
+    return render(request, 'home.html', {'posts_participated': posts_participated, 'posts_orderby_deadline': posts_orderby_deadline})
 
 
 # category별 게시글 확인
 def home_category(request, category):
-    posts = Post.objects.all().filter(category=category)
+    if category == 'All':
+        posts = Post.objects.all()
+    else:
+        posts = Post.objects.all().filter(category=category)
     return render(request, 'home.html', {'posts_list': posts, 'category': category})
 
 
