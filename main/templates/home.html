@@ -12,8 +12,8 @@
 
     <br>
     <hr>
-<h3>참가중인 공구 채팅방</h3>
 {% if posts_participated %}
+    <h3>참가중인 공구 채팅방</h3>
     {% for post in posts_participated %}
         <h2><a href="{% url 'chat:room' room_number=post.pk %}">{{ post.title }}</a></h2>
     {% endfor %}
