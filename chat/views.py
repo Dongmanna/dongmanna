@@ -3,8 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from chat.models import Room, Message
 from main.models import Post
 from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
+
 
 # 채팅방에 입장하기 위해 username, room_details를 받아 room.html로 넘겨준다
+@login_required
 def room(request, room_number):
     post = get_object_or_404(Post, pk=room_number)
     username = request.user.profile.nickname
@@ -20,7 +23,9 @@ def room(request, room_number):
         'room_details': room_details,
     })
 
+
 # 게시글을 작성하면 연결된 새로운 채팅방 생성
+@login_required
 def newRoom(request, pk):
     post = get_object_or_404(Post, pk = pk)
     
@@ -28,6 +33,7 @@ def newRoom(request, pk):
         new_room = Room.objects.create(post=post, number=pk)
         new_room.save()
     return redirect('detail', pk=pk)
+
 
 # message 전송
 def send(request):
@@ -37,12 +43,24 @@ def send(request):
     room_details = Room.objects.get(number=room_number)
 
     # 메시지 object 생성
-    new_message = Message.objects.create(room=room_details, value=message, user=username)
+    new_message = Message.objects.create(room=room_details, value=message, username=username)
     new_message.save()
     return HttpResponse('Message sent successfully')
+
 
 # message 수신
 def getMessages(request, room_number):
     room_details = Room.objects.get(number=room_number)
     messages = Message.objects.filter(room=room_details)
     return JsonResponse({"messages":list(messages.values())})
+
+
+# 공지 message 전송
+def sendNotice(message, pk):
+    room_details = Room.objects.get(number=pk)
+    username = "동만나 매니저"
+
+    # 메시지 object 생성
+    new_message = Message.objects.create(room=room_details, value=message, username=username)
+    new_message.save()
+    return HttpResponse('Message sent successfully')

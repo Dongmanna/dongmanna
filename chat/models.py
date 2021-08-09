@@ -11,4 +11,4 @@ class Message(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     value = models.CharField(max_length=1000000)
     date = models.DateTimeField(default=timezone.now, blank=True)
-    user = models.CharField(max_length=1000000)
+    username = models.CharField(max_length=20, default="none")
