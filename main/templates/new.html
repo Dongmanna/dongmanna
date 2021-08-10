@@ -1,10 +1,57 @@
 <!--main/templates/new.html-->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-<h1>NEW HTML</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" enctype="multipart/form-data"> 
-    {% csrf_token %}
-    {{ form.as_p }} 
-    <!-- <input type="file" name="imgs" multiple> -->
-    <button type="submit">글쓰기</button>
-</form>
+<head>
+    <title>Write</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'main/css/new.css' %}">
+</head>
+
+<body>
+
+    <main>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="title" id="title">제목:</label>
+            <input type="text" id="title" name="title">
+            <br><br>
+            <hr>
+            <section class="inputs">
+                <div class="name_input">
+                    <label for="item">품목</label>
+                    <input type="text" id="item" name="item">
+                </div>
+                <div class="name_input">
+                    <label for="link">링크</label>
+                    <input type="text" id="link" name="link">
+                </div>
+                <div class="name_input">
+                    <!-- <label for="location">지역</label> -->
+                    <!-- <input type="text" id="location" name="location"> 
+                    지역 일단 주석처리-->
+                </div>
+
+                <div class="name_input">
+                    <label for="people">n/m</label>
+                    <input type="text" id="people" name="people">
+                </div>
+                <div class="name_input">
+                    <div class="dead">
+                        <label for="deadline">마감기한</label>
+                        <input type="datetime-local" id="deadline" name="deadline">
+                    </div>
+                </div>
+            </section>
+            <input type="text" id="bodytext" name="bodytext" placeholder="내용을 입력하세요.">
+            <button type="submit" id = "makechat">대기방 개설</button>
+        </form>
+    </main>
+</body>
+
+</html>
+{% endblock %}

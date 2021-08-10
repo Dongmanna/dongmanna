@@ -42,7 +42,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 # 원래 가려고 했던 페이지로 이동하거나 home으로 이동
-                return redirect(request.GET.get('next') or ('home', 'All'))
+                return redirect(request.GET.get('next') or 'home', 'All')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})

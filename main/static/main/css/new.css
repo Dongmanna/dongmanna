@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'S-CoreDream-5Medium';
+}
+
+main{
+    height: 700px;
+    width: 900px;
+    margin: 7% auto;
+    border-radius: 3px;
+    border: 2.7px solid #9dc39c;
+}
+
+label{
+    margin-top:3%;
+    margin-left: 2%;
+    font-size: 15pt;
+}
+#location{
+    width: 200px;
+}
+
+#item{
+    width:200px;
+}
+
+#title{
+    margin-right: 5%;
+    margin-left: 1%;
+    margin-top: 2%;
+    position:relative;
+    left:5%;
+    height: 30px;
+    width: 600px;
+}
+
+form{
+    height: 500px;
+}
+
+.inputs{
+    margin-top:0px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.name_input{
+    width: 400px;
+    height: 40px;
+}
+
+
+input{
+    margin-top: 3px;
+    margin-left: 2%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
+
+.dead{
+    position: relative;
+    right: 39px;
+}
+
+#bodytext{
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: auto;
+    width: 700px;
+    height: 200px;
+}
+
+#makechat{
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 66%;
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 0;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+
+}
+button:active{
+    box-shadow: 1px 1px;
+}
+
+input::placeholder{
+    color: #9dc39c;
+    position: relative;
+    left:38%;
+    font-size: 20px;
+}
+input:focus{
+    border: 2px solid #156917;
+    outline:0;
+}
