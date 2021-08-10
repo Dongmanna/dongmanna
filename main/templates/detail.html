@@ -42,6 +42,6 @@
 
 <hr>
 
-<a href="{% url 'home' %}">HOME</a><br>
+<a href="{% url 'home' 'All' %}">HOME</a><br>
 <a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>
 <a href="{% url 'delete' pk=post.pk %}">DELETE</a>
