@@ -1,28 +1,55 @@
 <!--main/templates/detail.html-->
 {% extends 'base.html' %}
+
 {% load static %}
 {% load bootstrap4 %}
 {% block content %}
 
 
-<!--공구 참여 버튼-->
-<hr>
-<div >공구 참여자 수 : {{ post.members.count }}/{{ post.limit }}</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Detail_1</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/detail.css' %}">
+</head>
 
 
+    <header>
+        <img class="logo" src="./iconmonstr-basket-7-48.png" alt="">
 
-<!--로그인이 되어있고, 글쓴이를 제외한 유저들에게만 보이게 함-->
-{% if user.is_authenticated and user.profile != post.author %}
-<a href="{% url 'post_participated_toggle' post.pk %}" class="btn btn-outline-success mr-5">
-    {% if user.profile in post.members.all %}
-        취소
-    {% elif post.members.count >= post.limit%}
-        모집 완료
-    {% else %}
-        공구 참여하기
-    {% endif %}
-</a><br>
-{% endif %}
+
+        <div class="profile-container"><img class="profile-img" src="./profile.png" alt="profile"></div>
+        <div class="nickname"> "닉네임" 님 환영해요!</div>
+        <button class="logout">마이페이지</button>
+        <button class="logout">로그아웃</button>
+    </header>
+  <!--
+    <hr>
+    <main>
+        <section class="boxtop">
+            <b>제목</b>
+            <div class="writer">
+                <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=30px, height=30px>
+                작성자
+            </div>
+        </section>
+        <hr align="center" width="80%" size="5" color="green" noshade />
+        <form>
+            <section class="inputs">
+                <div class="name_input">
+                    <label for="location">지역</label>
+                    <input type="text" readonly id="location" name="location">
+                </div>
+                <div class="name_input">
+                    <label for="link">링크</label>
+                    <input type="text" readonly id="link" name="link">
+                </div>
+                <div class="name_input">
+                    <label for="item">품목</label>
+                    <input type="text" readonly id="item" name="item">
+                </div>
 
 
 
@@ -30,7 +57,7 @@
 <a href="{% url 'home' 'All' %}">HOME</a><br>
 <a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>
 <a href="{% url 'delete' pk=post.pk %}">DELETE</a>
-
+-->
 <!-- /////////////////////// -->
 <head>
     <title>Detail</title>
@@ -108,4 +135,5 @@
         </section>
     </form>
 </main>
+
 {% endblock %}

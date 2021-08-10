@@ -1,8 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 {% load bootstrap4 %}
-<h1>Edit Profile</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/edit_profile.css' %}">
+</head>
 
-<form method='POST' enctype="multipart/form-data">
-    {% csrf_token %}
-    {% bootstrap_form profile_form %}
-    <input type="submit" value="Submit"/>
-</form>
+<body>
+    <section class="container">
+        <form method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form profile_form %}
+            <button class = "save" type="submit">저장</button>
+        </form>
+    </section>
+</body>
+
+</html>
+{% endblock %}
