@@ -41,9 +41,10 @@
                         <input type="hidden" name="category" label="Category" value="{{category}}">
                         <div class= "search-box">
                             <input type="text" name="search_word" label="Search Word" placeholder="검색어를 입력해주세요.">
-                            <button type="submit" value="Submit" > 검색 </button> <a href="{% url 'new'  %}"><button>글쓰러 가기</button></a>
+                            <button type="submit" value="Submit" > 검색 </button>  
                         </div>
                     </form>
+                    <a href="{% url 'new'  %}"><button style="align-self: flex-end;">글쓰러 가기</button></a>
 
                     
                         <!-- 카테고리 -->
