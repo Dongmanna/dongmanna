@@ -70,6 +70,19 @@ input{
     background-color: #fff;
     border: 2.7px solid #9dc39c;
 }
+textarea{
+    border: 2.7px solid #9dc39c;
+}
+select{
+    margin-top: 3px;
+    margin-left: 2%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+
+}
 
 .dead{
     position: relative;
