@@ -18,7 +18,7 @@
     <div id="container">
         <div id="incontainer">
             <section>
-                <div class = "phocontainer">
+                <div class="phocontainer">
                     <div class="myimg">
                         <div class="photo">
                             {% if user_info.profile.my_image %}
@@ -35,13 +35,22 @@
                 </div>
             </section>
             <section id="myinfo">
-                <h2 class="info">{{ user_info.username }}</h2>
-                <h2 class="info">{{ user_info.profile.address }}</h2>
-                <h2 class="info">{{user_info.profile.nickname}}</h2>
-                <h2 class="info">기타 정보</h2>
+                <div class="divinfo">
+                    <p class="ininfo">이름</p>
+                    <h2 class="info">{{ user_info.username }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">주소</p>
+                    <h2 class="info">{{ user_info.profile.address }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">닉네임</p>
+                    <h2 class="info">{{user_info.profile.nickname}}</h2>
+                </div>
+
             </section>
         </div>
-        <div class="tabletitle">
+        <!-- <div class="tabletitle">
             <b>지난 거래 내역</b>
         </div>
 
@@ -49,18 +58,18 @@
         <div class="last_table">
             {% for post in posts_list %}
             <div class="intable">
-                <b class=mytext>온라인 구매</b><!-- 상속받아서 바꿔야 함 -->
-                <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p>
+                <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 -->
+        <!-- <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p> 
                 <p>{{post.pub_date}}</p>
                 <p> 작성자 </p>
                 <p> 품목 </p>
                 <p> 인원 </p>
                 <p>{{post.body|linebreaks}}</p>
-                <b class="mytext"> 내가 쓴 글 </b><!-- 상속받아서 바꿔야 함 -->
-                <button class="review" id="modal_open">리뷰 작성</button>
-                {% endfor %}
-            </div>
-        </div>
+                <b class="mytext"> 내가 쓴 글 </b> 상속받아서 바꿔야 함 -->
+        <!-- <button class="review" id="modal_open">리뷰 작성</button> -->
+        {% endfor %}
+    </div>
+    </div>
     </div>
 </main>
 <div id="modal">
@@ -92,7 +101,6 @@
 
 {% if user == user_info %}
 <div>
-<a href="{% url 'edit_profile' %}">프로필 수정</a>
- {% endif %}
- <a href="{% url 'home' 'All' %}">홈으로 가기</a>
-
+    <a href="{% url 'edit_profile' %}">프로필 수정</a>
+    {% endif %}
+    <a href="{% url 'home' 'All' %}">홈으로 가기</a>

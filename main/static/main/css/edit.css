@@ -9,49 +9,29 @@
     font-family: 'S-CoreDream-5Medium';
 }
 
-main{
-    height: 700px;
-    width: 900px;
-    margin: 7% auto;
-    border-radius: 3px;
-    border: 2.7px solid #9dc39c;
-}
-
-label{
-    margin-top:3%;
-    margin-left: 2%;
-    font-size: 15pt;
-}
-#location{
-    width: 200px;
-}
-
-#item{
-    width:200px;
-    position:relative;
-    left:36px;
-}
-
-#link{
-    position: relative;
-    left:35px;
-}
-
-#title{
-    margin-right: 5%;
-    margin-left: 1%;
-    margin-top: 2%;
-    position:relative;
-    left:5%;
-    height: 30px;
-    width: 600px;
-}
-
 form{
     height: 500px;
+    display: flex;
 }
 
-.inputs{
+p{
+    margin-top:3%;
+    width:fit-content;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container{
+    height: 750px;
+    width: 900px;
+    position:relative;
+    top:70px;
+    border-radius: 3px;
+    border: 2.7px solid #9dc39c;
+    margin: 0 auto;
+}
+
+.inputs {
     margin-top:0px;
     margin-left: auto;
     margin-right: auto;
@@ -61,16 +41,15 @@ form{
     flex-wrap: wrap;
     justify-content: flex-end;
 }
-
-.name_input{
-    width: 400px;
-    height: 40px;
+label {
+    width:100px;
+    margin-top:3%;
+    font-size: 15pt;
 }
-
 
 input{
     margin-top: 3px;
-    margin-left: 2%;
+    margin-left: 3%;
     width: 250px;
     height: 35px;
     border-radius: 3px;
@@ -78,10 +57,6 @@ input{
     border: 2.7px solid #9dc39c;
 }
 
-
-textarea{
-    border: 2.7px solid #9dc39c;
-}
 select{
     margin-top: 3px;
     margin-left: 2%;
@@ -92,24 +67,21 @@ select{
     border: 2.7px solid #9dc39c;
 }
 
-.dead{
-    position: relative;
-    left: 0px;
+#id_title{
+    margin-right: 5%;
+    margin-left: 4%;
+    margin-top: 2%;
+    position:relative;
+    left:5%;
+    height: 30px;
+    width: 600px;
 }
 
-#bodytext{
-    margin-top: 10px;
-    margin-left: 10%;
-    margin-right: auto;
-    width: 700px;
-    height: 200px;
-}
-
-#makechat{
+.save{
     width: 200px;
     height: 50px;
-    margin-top: 30px;
-    margin-left: 66%;
+    margin-top: 20px;
+    margin-left: 75%;
     background-color: #fff;
     border: solid #9dc39c;
     border-radius: 0;
@@ -117,19 +89,26 @@ select{
     cursor:pointer;
     box-shadow: -0.4px -0.4px ;
     padding: 5px;
+}
+#id_category{
+    margin-top: 3px;
+    margin-left: 2%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
 
-}
-button:active{
-    box-shadow: 1px 1px;
+#id_body{
+    border: 2.7px solid #9dc39c;
+    width:700px;
+    height:200px;
 }
 
-input::placeholder{
-    color: #9dc39c;
-    position: relative;
-    left:38%;
-    font-size: 20px;
-}
-input:focus{
-    border: 2px solid #156917;
-    outline:0;
+.inform{
+    margin-left:5%;
+    margin-top:3%;
+    justify-content: space-around;
+    align-items: space-around;
 }
