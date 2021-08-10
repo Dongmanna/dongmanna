@@ -1,47 +1,92 @@
 <!--main/templates/detail.html-->
+{% extends 'base.html' %}
+{% block content %}
 {% load bootstrap4 %}
-<p>{{ post.category }}</p>
-<h2>{{ post.title }}</h2>
-모집 인원: {{ post.limit }} <br><br>
-품목: {{ post.item }} <br><br>
-{{ post.body }} <br><br>
-기한 :{{ post.deadline }}
-{% if post.image %}
-    <img src="{{ post.image.url }}"><br>
-{% endif %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
 
-<!--공구 참여 버튼-->
-<hr>
-<div >공구 참여자 수 : {{ post.members.count }}/{{ post.limit }}</div>
+<head>
+    <title>Detail_1</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/detail.css' %}">
+</head>
 
-<p>
-    참여자: <br>    
-    {% for member in post.members.all %}
-        <b>-{{member}}</b><br>
-    {% endfor %}
-</p>
+<body>
+    <header>
+        <img class="logo" src="./iconmonstr-basket-7-48.png" alt="">
 
-<!--로그인이 되어있고, 글쓴이를 제외한 유저들에게만 보이게 함-->
-{% if user.is_authenticated and user.profile != post.author %}
-<a href="{% url 'post_participated_toggle' post.pk %}" class="btn btn-outline-success mr-5">
-    {% if user.profile in post.members.all %}
-        취소
-    {% elif post.members.count >= post.limit%}
-        모집 완료
-    {% else %}
-        공구 참여하기
-    {% endif %}
-</a><br>
-{% endif %}
+        <div class="profile-container"><img class="profile-img" src="./profile.png" alt="profile"></div>
+        <div class="nickname"> "닉네임" 님 환영해요!</div>
+        <button class="logout">마이페이지</button>
+        <button class="logout">로그아웃</button>
+    </header>
+    <hr>
+    <main>
+        <section class="boxtop">
+            <b>제목</b>
+            <div class="writer">
+                <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=30px, height=30px>
+                작성자
+            </div>
+        </section>
+        <hr align="center" width="80%" size="5" color="green" noshade />
+        <form>
+            <section class="inputs">
+                <div class="name_input">
+                    <label for="location">지역</label>
+                    <input type="text" readonly id="location" name="location">
+                </div>
+                <div class="name_input">
+                    <label for="link">링크</label>
+                    <input type="text" readonly id="link" name="link">
+                </div>
+                <div class="name_input">
+                    <label for="item">품목</label>
+                    <input type="text" readonly id="item" name="item">
+                </div>
 
-<!--채팅방에 입장할 수 있는 버튼-->
-{% if user.profile in post.members.all %}
-<a href="{% url 'chat:room' room_number=post.pk %}">채팅방 입장</a><br><br>
-{% endif %}
+                <div class="name_input">
+                    <label for="people">n/m</label>
+                    <input type="text" readonly id="people" name="people">
+                </div>
+                <div class="name_input">
+                    <div class="dead">
+                        <label for="deadline">마감기한</label>
+                        <input type="datetime-local" id="deadline" name="deadline">
+                    </div>
+                </div>
+            </section>
+            <input type="text" readonly id="bodytext" name="bodytext" placeholder="본문 내용">
+            <section class="member">
+                <div class="idimg">
+                    <div class="memimg">
+                        <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=40px, height=40px>
+                    </div>
+                    <p>아이디</p>
+                    <p class="writtenby">작성자</p>
+                </div>
+                <div class="idimg">
+                    <div class="memimg">
+                        <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=40px, height=40px>
+                    </div>
+                    <p>아이디</p>
+                </div>
+                <div class="idimg">
+                    <div class="memimg">
+                        <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=40px, height=40px>
+                    </div>
+                    <p>아이디</p>
+                </div>
 
-<hr>
+            </section>
+            <section class="btmbox">
+                <button class="chatin">참가하기!</button>
+            </section>
+        </form>
+    </main>
+</body>
 
-<a href="{% url 'home' %}">HOME</a><br>
-<a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>
-<a href="{% url 'delete' pk=post.pk %}">DELETE</a>
+</html>
+{% endblock %}
