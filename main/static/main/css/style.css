@@ -190,14 +190,13 @@ body{
     display: flex;
     justify-content: space-evenly ;
     width:25vw;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 6px;
+    margin-bottom: 8px;
     
 }
 .result-box{
     width:90%;
     height: 75%;
-    border:solid;
     overflow: scroll;
     border:solid #9dc39c;
     padding: 20px;
@@ -245,7 +244,7 @@ body{
 .second h2{
     background-color: rgba(255, 255, 255, 0);
     margin-right: 49%;
-    color:rgb(81, 168, 81);
+    color:#fbfaf6;
 
 }
 
@@ -287,9 +286,14 @@ body{
     border: solid #fbfaf6 2px;
     border-radius:5px;
     display: flex;
-    text-align: justify;
+    text-align:end;
     justify-content:space-around;
     align-items: center;
+    
+}
+.inline-texts{
+    display: inline-block;
+
 }
 .my-room button{
     margin-top: 3px;
@@ -334,16 +338,22 @@ body{
 .third h2{
     background-color: rgba(255, 255, 255, 0);
     margin-right: 60%;
-    color:rgb(81, 168, 81);
+    color:#9dc39c;
 }
 .rec-room{
     display:flex;
     align-items: center;
     height:7%;
     width:80%;
+    padding-left:10%;
     border: solid rgb(81, 168, 81)2px;
     border-radius:5px;
     margin: 2% auto;
+}
+.rec-room b{
+    margin: 0 30px 0 10px;
+    font-size: 15px;;
+    color: rgb(81, 168, 81);
 }
 
 /* //////////////////////메인페이지 애니메이션//////// */
