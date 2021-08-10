@@ -17,8 +17,8 @@ def home(request):
     posts_list = Post.objects.all()
     posts = Post.objects.exclude(deadline = None)
     for post in posts_list:
-          if post.members.count() != post.limit - 1:
-              posts=posts.exclude(pk=post.pk)
+        if post.members.count() != post.limit - 1:
+            posts=posts.exclude(pk=post.pk)
     posts_orderby_deadline = posts.order_by('deadline')
     return render(request, 'home.html', {'posts_participated': posts_participated, 'posts_orderby_deadline': posts_orderby_deadline})
 

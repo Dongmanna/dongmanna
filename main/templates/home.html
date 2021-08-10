@@ -4,32 +4,15 @@
 {% load static %}
 {% block content %}
 
-<!-- <form action="{% url 'search' %}" method="post"> {% csrf_token %}
-    <input type="hidden" name="category" label="Category" value="{{category}}">
-    <input type="text" name="search_word" label="Search Word">
-    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
-</form> -->
 
-
-<!-- {% if posts_list %}
-    {% for post in posts_list %}
-        <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{post.pub_date}}</p>
-        <p>{{post.body|linebreaks}}</p>
-        <hr>
-    {% endfor %}
-{% elif search_term %} 검색란이 공란인지 확인
-    <b><i>Search Word({{ search_term }}) Not Found</i></b>
-    <hr>
-{% endif %} -->
 
 
 
 
 <!-- /////////////////////////////////////////////// -->
 
-<!DOCTYPE html>
-<html lang="en">
+
+
 <head>
     
     <title>Main</title>
@@ -47,22 +30,66 @@
             <img class = "offline" src = "{% static 'main/img/offline.png' %}" alt = "delivery">
             
         </div>
+        <a href="{% url 'new'  %}">작성</a>
 
         
-            <div class="first">
-                <a href="{% url 'home_category' 'Offline' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
-                <a href="{% url 'home_category' 'Online' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
-                <a href="{% url 'home_category' 'Delivery' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
-            </div>
+            <!-- <div class="first">
+                <a href="{% url 'home_category' 'Offline' %}"><div class="box2"> <img src="{% static 'main/img/offline2.jpg' %}" alt=""></div></a>
+                <a href="{% url 'home_category' 'Online' %}"><div class="box2"><img src="{% static 'main/img/online2.jpg' %}" alt=""></div></a>
+                <a href="{% url 'home_category' 'Delivery' %}"><div class="box2"><img src="{% static 'main/img/delivery2.png' %}" alt=""></div></a>
+            </div> -->
 
+            <div class="first">
+                        <!-- 검색창 -->
+                    
+                    <form action="{% url 'search' %}" method="post" class="search-container"> 
+                        {% csrf_token %}
+                        <input type="hidden" name="category" label="Category" value="{{category}}">
+                        <div class= "search-box">
+                            <input type="text" name="search_word" label="Search Word" placeholder="검색어를 입력해주세요.">
+                            <button type="submit" value="Submit" > 검색 </button>
+                        </div>
+                    </form>
+
+                    
+                        <!-- 카테고리 -->
+                    <div class="category-box">
+                        <a href="{% url 'home_category' 'All' %}">전체글</a>
+                        <a href="{% url 'home_category' 'Offline' %}">오프라인</a>
+                        <a href="{% url 'home_category' 'Online' %}">온라인</a>
+                        <a href="{% url 'home_category' 'Delivery' %}">배달</a>
+                    </div>
+                
+                    <!-- 검색결과 박스 -->
+                    <div class="result-box">
+                        
+                        {% if posts_list %}
+                        {% for post in posts_list %}
+                        <a href="{% url 'detail' pk=post.pk %}"  class="in-result-box"> <b>{{ post.category }}</b>  {{ post.title }} {{ post.author }}  {{ post.item }}   </a>
+                            
+
+                        {% endfor %}
+
+                        {% elif search_term %} <!--검색란이 공란인지 확인 -->
+                        <b>"({{ search_term }})"에 대한 검색결과가 없습니다. 새로운 글을 작성해 보시는 건 어떨까요?</b>
+                        
+                        {% endif %}
+                    </div>
+                    
+                    
+                </div>
+
+
+            </div>
+                
             <div class="second">
                 <h2>참여중인 대기방</h2>
                 <div class="my-group">
                     {% if posts_participated %}
                         {% for post in posts_participated %}
-                        <a href="{% url 'detail' pk=post.pk %}"><div class="my-room"><b>{{ post.category }}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} 3/4  <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div></a>
-                             
-                            <!--데이터 넣고 확인 필요-->
+                        <a href="{% url 'detail' pk=post.pk %}"><div class="my-room"><b>{{ post.category }}</b>  {{ post.title }} {{ post.author }}  {{ post.item }}  <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div></a>
+
+                            <!--데이터 넣고 확인 필요 a태그 중첩도 확인-->
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -74,7 +101,7 @@
                 <div class = "rec-room-list"></div>
                 {% if posts_orderby_deadline %}
                     {% for post in posts_orderby_deadline %}
-                    <a href="{% url 'detail' pk=post.pk %}"><div class="rec-room"> <b>{{post.category}}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} 3/4 </div></a>
+                    <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} </a>
                     {% endfor %}
                 {% endif %}
                 
@@ -85,4 +112,4 @@
     <script src="{% static 'main/js/main.js' %}"></script> 
 </body>
 {% endblock %}
-</html>
+
