@@ -17,6 +17,31 @@
     font-style: normal;
 }
 
+input{
+    
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+
+}
+input:focus{
+    border: 2px solid #156917;
+    outline:0;
+}
+input::placeholder{
+    color: #9dc39c;
+    font-size: 20px;
+    
+}
+button{
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 2px;
+    color: #9dc39c;
+    cursor:pointer;
+    
+    padding: 5px;
+}
 *{
 	box-sizing: border-box; 
     /* background-color: #fbfaf6;  */
@@ -95,7 +120,7 @@ button{
     padding: 5px;
 }
 header button{
-    border: solid #fbfaf6;
+    
     border-radius: 2px;
     color: #fbfaf6;
 }
@@ -104,29 +129,7 @@ header button{
 /* ///////////////////////////////////////////////////메인페이지 */
 
 
-input{
-    
-    border-radius: 3px;
-    background-color: #fff;
-    border: 2.7px solid #9dc39c;
 
-}
-input:focus{
-    border: 2px solid #156917;
-    outline:0;
-}
-input::placeholder{
-    color: #9dc39c;
-}
-button{
-    background-color: #fff;
-    border: solid #9dc39c;
-    border-radius: 2px;
-    color: #9dc39c;
-    cursor:pointer;
-    
-    padding: 5px;
-}
 /* ////////////////////////////// */
 body{
     margin: 0;
@@ -144,54 +147,84 @@ body{
     
 }
 
-
-
-
 .first{
     margin-top: 20vh;
-    margin-bottom:40px;
-    background-color: rgba(255, 255, 255, 0);
-    height: 100vh;
-    display:flex;
-    justify-content:space-around;
+    
+    width:70vw;
+    margin-left:15vw;
+    margin-right: 15vw;
+    height: 80vh;
+    margin-bottom: 200px;
+    background-color:#fbfaf6;
     border-radius:4px;
-    padding-top:0;
-    padding-bottom:0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding:5%;
     
 }
-.box2{
-    box-shadow: rgba(100, 100, 111, 0.4) 1px 7px 29px 0px;
-    width:20vw;
-    height:60vh;
-    background-color: #fbfaf6;
-    
-}
-.first > a{
-    background-color: rgba(255, 255, 255, 0);
-}
-/* .search-box{
+
+.search-box{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color:  rgba(255, 255, 255, 0);
-    transform:translate( 0, 100px);
-    transition: 1.5s;
-    opacity: 0.3;
+    
 }
 .search-box input{
     margin-left:20px;
-    width: 450px;
-    height: 70px;
+    width: 400px;
+    height: 55px;
     font-size: 30px;
     padding: 20px;
 }
 
-.search-box button{
+.search-box > button{
     margin-left: 40px;
     height: 50px;
-    width: 80px;
-} */
+    width: 60px;
+}
+.category-box{
+    display: flex;
+    justify-content: space-evenly ;
+    width:25vw;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    
+}
+.result-box{
+    width:90%;
+    height: 75%;
+    border:solid;
+    overflow: scroll;
+    border:solid #9dc39c;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+}
+.result-box::-webkit-scrollbar {
+    width: 6px;
+    height: 90%;
+    margin-right: 30px;
+}
+.in-result-box{
+    display:flex;
+    align-items: center;
+    margin: 10px;
+    height:13%;
+    width:90%;
+    border: solid #9dc39c;
+    border-radius:5px;
+}
+.in-result-box b{
+    margin: 0 30px 0 10px;
+    font-size: 15px;;
+    color: rgb(81, 168, 81);
+   
+}
 
 .second{
     width:70vw;
@@ -224,7 +257,7 @@ body{
     height: 50vh;
     border:solid #fbfaf6;
     overflow:scroll;
-    opacity:0;
+    
     margin-bottom: 40px;
     border-radius: 10px;
 
@@ -234,10 +267,10 @@ body{
     height: 90%;
     margin-right: 30px;
 }
-/* ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: transparent;
     
-} */
+}
 ::-webkit-scrollbar-thumb {
     border-radius: 0px 5px 5px 0px;
     background-color: #9dc39c;
@@ -294,7 +327,6 @@ body{
     align-items: center;
     height:7%;
     width:70%;
-   
     border: solid rgb(81, 168, 81)2px;
     border-radius:5px;
 }
@@ -307,7 +339,7 @@ body{
     width:100%;
     background-image: url("../img/main-back.jpg");
     position:relative;
-    margin-top: 10vh;
+    margin-top: 9vh;
     
 }
 h1{
