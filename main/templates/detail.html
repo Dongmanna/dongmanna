@@ -16,15 +16,7 @@
 </head>
 
 
-    <header>
-        <img class="logo" src="./iconmonstr-basket-7-48.png" alt="">
-
-
-        <div class="profile-container"><img class="profile-img" src="./profile.png" alt="profile"></div>
-        <div class="nickname"> "닉네임" 님 환영해요!</div>
-        <button class="logout">마이페이지</button>
-        <button class="logout">로그아웃</button>
-    </header>
+    
   <!--
     <hr>
     <main>
@@ -53,11 +45,10 @@
 
 
 
-<hr>
-<a href="{% url 'home' 'All' %}">HOME</a><br>
-<a href="{% url 'edit' pk=post.pk %}">EDIT</a><br>
-<a href="{% url 'delete' pk=post.pk %}">DELETE</a>
--->
+<hr>-->
+
+
+
 <!-- /////////////////////// -->
 <head>
     <title>Detail</title>
@@ -65,17 +56,18 @@
     <link rel="stylesheet" href="{% static 'main/css/detail.css' %}">
 </head>
 <main>
+    
     <section class="boxtop">
         <b>{{ post.title }}</b>
         <div class="writer">
-            <img src='./iconmonstr-user-6-240.png' alt="myprofile" width=30px, height=30px>
-            {{post.author}}
+            작성자 : {{post.author}}
         </div>
     </section>
     <hr align="center" width="80%" size="5" color="green" noshade />
-    <form>
+    
         <section class="inputs">
             <div class="name_input">
+                <label for="link">구분</label>
                 <div class="input" type="text" readonly id="location" name="location">{{ post.category }}</div>
             </div>
             <div class="name_input">
@@ -86,54 +78,81 @@
                 <label for="item">품목</label>
                 <div class="input" type="text" readonly id="item" name="item">{{ post.item }}</div>
             </div>
-
-            <div class="name_input">
-                <label for="people">정원</label>
-                <div class="input" type="text" readonly id="people" name="people">{{ post.limit }}</div>
-            </div>
             <div class="name_input">
                 <div class="dead">
                     <label for="deadline">마감기한</label>
                     <div class="input" type="datetime-local" id="deadline" name="deadline">{{ post.deadline }}</div>
                 </div>
             </div>
+            <div class="name_input">
+                <label for="people">정원</label>
+                <div class="input" type="text" readonly id="people" name="people"> {{ post.members.count }}/{{ post.limit }}</div>
+            </div>
         </section>
         <div class="input" type="text" readonly id="bodytext" name="bodytext" placeholder="본문 내용">{{ post.body }}</div>
-        <p></p>
+
         <!-- 이미지는 일단...뺍시다... -->
 <!-- {% if post.image %}
     <img src="{{ post.image.url }}"><br>
 {% endif %} -->
-        
+        <h3 id="part-text">참가자</h3>
         <section class="member">
-            <div class="idimg">
-                <p>
-                    {% for member in post.members.all %}
-                    <div class = "memimg">
-                        <img src='{{member.my_image}}' alt="myprofile" width=40px, height=40px>
-                    </div>
-                        <p>{{member}}</p>
-                        {% if post.author == member %}
-                            <p class="writtenby">작성자</p>
-                        {% endif %}
-                    {% endfor %}
-                </p>
+                        
                 
-            </div>
+                    
+                    {% for member in post.members.all %}
+                    <div class="participant">
+                        <div class = "memimg">
+                            {% if member.my_image %}
+                            <img src='{{member.my_image}}' alt="myprofile" width=40px, height=40px>
+                            {% else %}
+                            <img src='{%static "main/img/profile.png"%}' alt="myprofile" width=40px, height=40px>
+                            {% endif %}
+
+                        </div>
+                            <p> -{{member}}</p>
+                            
+                    </div>
+                    
+                    {% endfor %}
+                    
+                    
+                
+            
             <!-- 여기서부터 -->
             
         </section>
-        <section class="btmbox">
+        <div class="btmbox">
             
             {% if user.profile in post.members.all %}
-                <a href="{% url 'chat:room' room_number=post.pk %}" class="chatin">채팅방 입장</a><br><br>
+            
+                <a href="{% url 'chat:room' room_number=post.pk %}" ><button class="btn">채팅방 입장</button></a>
+                {% if post.author == user.profile %}
+                    <a href="{% url 'edit' pk=post.pk %}"><button class="btn">EDIT</button>  </a>
+                    <a href="{% url 'delete' pk=post.pk %}"><button class="btn">DELETE</button> </a>
+                {% endif %}
+            
             {% else %}
-                <button class="chatin">참가하기!</button>
+
+            {% if user.is_authenticated and user.profile != post.author %}
+                <a href="{% url 'post_participated_toggle' post.pk %}" class="btn btn-outline-success mr-5">
+                    {% if user.profile in post.members.all %}
+                    <button class="btn">취소</button>
+                    {% elif post.members.count >= post.limit%}
+                    <button class="btn" disabled>모집완료</button>
+                    {% else %}
+                    <button class="btn">공구 참여하기</button>
+                    {% endif %}
+                </a>
+            {% endif %}
+
             {% endif %}
 
 
-        </section>
-    </form>
+
+
+            </div>
+    
 </main>
 
 {% endblock %}

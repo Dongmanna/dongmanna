@@ -11,20 +11,16 @@
 
 main{
     margin-top: 6%;
-    margin-left: 7%;
+    
     text-align: space-around;
 }
 
-.boxtop{
-    justify-content: flex-end;
-    align-items: flex-end;
-}
+
 .writer{
     margin-left: 80%;
     width: 200px;
     height: 50px;
-    justify-content: space-between;
-    align-items:space-around;
+    
 }
 b{
     margin-left: 10%;
@@ -32,14 +28,15 @@ b{
 }
 
 .inputs{
+    margin: 0 auto;
     margin-top:30px;
-    margin-left: 18%;
-    margin-right: auto;
+    
     height: 200px;
-    width: 800px;
+    width: 60%;;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    
 }
 
 .name_input{
@@ -51,17 +48,21 @@ b{
 .input{
 
     margin-top: 3px;
-    width: 250px;
+    width: 80%;
     height: 30px;
     border-radius: 3px;
     background-color: #fff;
-    border: 2.7px solid #9dc39c;
+    border: 2px solid #9dc39c;
 }
+
 
 #location{
     width: 150px;
 }
 #item{
+    width:150px;
+}
+#people{
     width:150px;
 }
 
@@ -75,31 +76,46 @@ input::placeholder{
     left:45%;
     font-size: 15pt;
 }
-.dead{
-    position:relative;
-    right: 7%;
-}
+
 
 #bodytext{
+    
+    
+    margin: 0 auto;
     margin-top: 10px;
-    margin-left: 17%;
-    margin-right: auto;
-    width: 730px;
+    width: 60%;
     height: 200px;
 }
 
 .member{
     display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: space-between;
-    width: 730px;
-    height: 70px;
-    margin-top: 4%;
-    position: relative;
-    left: 200px;
+    align-content: center;
+    justify-content: flex-start;
+    width: 60% ;
+    margin: 0 auto;
+    margin-top: 1%;
+    padding-left: 3vw;
+    
+    /* border:solid; */
 }
 
+
+
+.idimg{
+    width: 170px;
+    display: flex;
+}
+#part-text{
+    margin-left:25%;
+    color:#9dc39c;
+}
+.participant{
+    width: 15%;
+    margin: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .memimg{
     border-radius: 100%;
     border-style: solid;
@@ -108,31 +124,21 @@ input::placeholder{
     height:40px;
     margin-left:3%;
     margin-bottom: 0.7%;
+    
 }
 
-.idimg{
-    width: 170px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.idimg>p{
-    margin-left:0%;
-    margin-top:5px;
-
-}
-
-.idimg>img{
-    margin-left:20%;
-}
 
 .btmbox{
-    margin-right: 225px;
-    margin-top: 50px;
-    float: right;
-    align-content: flex-end;
+    margin-left:65%;
+    
+    display:flex;
+    
     background-color: transparent;
+    margin-bottom: 10vh;
+    
+}
+.btn{
+    margin-right: 10px;
 }
 
 button:active{
@@ -140,8 +146,8 @@ button:active{
 }
 
 .writtenby{
-    padding-left:2%;
-    width:50px;
+    width: 40%;
+    border: 2px solid #9dc39c;
 }
 
 
