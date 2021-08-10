@@ -14,10 +14,31 @@
 
 *{
 	box-sizing: border-box; 
-    background-color: #fefdf3; 
+    background-color: #fbfaf6; 
     font-family:  'S-CoreDream-5Medium';
 }
+
 /* login 페이지 */
+.login-main{
+    display: flex;
+    align-items: center;
+    
+    height: 100vh;
+    overflow:hidden;
+}
+
+.login-main-left{
+    width: 52%;
+    height: 100vh;
+    background-color: #9dc39c;
+    display: flex;
+    justify-content: flex-end;
+}
+.login-main-right{
+    width:48%;
+    height:100vh;
+    
+}
 .login-title{
     font-family: 'TTTogether' ;
     color: #156917;
@@ -25,21 +46,35 @@
  
     
 }
-.login-container{
+.login-container-left{
     display: flex;
-    height: 80vh;
-    width: 70vw;
-    margin-bottom: 1000px;
+    justify-content:flex-end;
+    height: 75vh;
+    width: 50vw;
+    margin-top: 12vh;    
+    background-color: rgba(100, 100, 100, 0);
+    
+}
+.login-container-right{
+    display: flex;
+    height: 75vh;
+    width: 60vw;
+    justify-content:left;
+    margin-top: 12vh;
     border-radius: 5px;
-    box-shadow: dimgray;
+    
+    
 }
 .description{
-    width: 60%;
+    width: 70%;
     height: 100%;
     overflow: hidden;
-    border: solid rgb(232, 241, 181);
+    border: solid #9dc39c 1px;
+    border-right:0px;
     border-radius: 4px 0 0 4px;
     position: relative;
+    box-shadow: rgba(100, 100, 111, 0.5) -5px 0px 29px 0px;
+    
 }
 .description .carousel{
     display: flex;
@@ -75,23 +110,30 @@
 
  /* 오른쪽 내용 */
 .right-box{
-    background-color:  rgb(232, 241, 181);
+    background-color: #fbfaf6;
     width: 50%;
     display: flex;
     justify-content: center;
-    border-radius: 0 4px 100px 0;
+    border-radius: 0 4px 4px 0;
+    
+    border-left:0px;
+    border: 2px;
+    border-style: solid;
+    border-color:#9dc39c ;
+    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 7px;
 }
 
 .login-col{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:  rgb(232, 241, 181);
-    width: 60%;
+    background-color:  rgba(100, 100, 100, 0);
+    width: 65%;
 }
 .login-col h2{
-    background-color:  rgb(232, 241, 181);
+    background-color:  rgba(255, 255, 255, 0);
     color:#fff;
+    text-shadow:-2px 0 #9dc39c, 0 2px #9dc39c, 2px 0 #9dc39c, 0 -2px #9dc39c ;
     font-size: 30px;
     margin-bottom: 0px;
 }
@@ -99,20 +141,22 @@
 .login-box{
     border-radius:2px;
     width: 100%;
-    height: 40%;
-    margin-bottom: 60%;
-    padding: 30px;
+    height: 50%;
+    margin-bottom: 40%;
+    padding: 20px;
+    padding-top: 40px;
     position:relative;
+    border: solid #9dc39c 2px;
 }
 
 
 
 
 input{
-    margin: 15px 12.5% 0px 12.5% ;
-    height: 30px;
-    width: 75%;
-    border: 2.7px solid rgb(232, 241, 181);
+    margin: 15px 15% 0px 15% ;
+    height: 35px;
+    width: 70%;
+    border: 2.7px solid #9dc39c;
     border-radius: 3px;
     background-color: #fefdf3;
     
@@ -123,19 +167,19 @@ input:focus{
     outline:0;
 }
 input::placeholder{
-    color: rgb(232, 241, 181);
+    color: #9dc39c;
 }
 button{
     background-color: #fefdf3;
-    border: solid rgb(232, 241, 181);
+    border: solid #9dc39c;
     border-radius: 2px;
-    color: rgb(232, 241, 181);
+    color: #9dc39c;
     cursor:pointer;
     box-shadow: -0.4px -0.4px ;
     padding: 5px;
-    width: 70px;
-    height: 30px;
+    width: 5vw;
 }
+
 button:active{
     box-shadow: 1px 1px;
 }
@@ -143,7 +187,7 @@ button:active{
 .button-container{
     background-color:inherit;
     display: flex;
-    justify-content: space-around;
+    justify-content:space-evenly;
     margin-top:30px;
 
 }
@@ -151,9 +195,5 @@ button:active{
 
 
 
-.login-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-}
+
+

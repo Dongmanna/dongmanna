@@ -1,17 +1,19 @@
-const prevButton = document.querySelector('.prev');
+const prevButton = document.querySelectorAll('.prev');
 const nextButton = document.querySelectorAll('.next'); 
 const carousel = document.querySelector('.carousel');
 
 
 
 let index = 0; 
-console.log(prevButton);
-// prevButton.addEventListener('click', () => { 
-//     let imageWidth = document.querySelector('.big-box').offsetWidth;
-//     if (index === 0) return;
-//     index-=1;
-//     carousel.style.transform = `translate3d(-${ imageWidth* index}px, 0, 0)`;
-// }); 
+for (let pr=1;pr<4;pr++){
+    prevButton[pr-1].addEventListener('click', () => { 
+        let imageWidth = document.querySelector('.big-box').offsetWidth;
+        if (index === 0) return;
+        index-=1;
+        carousel.style.transform = `translate3d(-${ imageWidth* index}px, 0, 0)`;
+    }); 
+}
+
 
 for (let a = 1 ;a<4;a++) {
     console.log(nextButton[a-1]);

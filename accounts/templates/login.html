@@ -13,9 +13,11 @@
 </head>
 <body>
     <main class = "login-main">
-        <h1 class="login-title"> 동네에서 만나요</h1>
-        <div class = "login-container">
-            <div class = "description">
+        
+        <div class= "login-main-left">
+            
+            <div class = "login-container-left">
+                <div class = "description">
                 <button class="prev" type="button" >prev</button> 
                 <button class="next" type="button" >next</button>
                 <div class="carousel">
@@ -28,36 +30,36 @@
                     <img src="{% static 'accounts/img/login7.png' %}" alt="">
                     <img src="{% static 'accounts/img/login8.png' %}" alt="">
                 </div>
+                </div>
             </div>
-
-            <div class = "right-box">
-                <div class="margin"></div>
-                <div class="login-col">
-                    <h2>Login</h2>
-                    <div class="login-box">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="ID">
-                            <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
-                            <div class="button-container">
-                                <a href="{% url 'signup' %}"><button type="button">회원가입</button></a> <button type="submit">로그인</button>
-                            </div>
-                            
-                        </form>
-                        
-                        
-                        
+        </div>
+        <div class= "login-main-right">
+            <div class="login-container-right">
+                <div class = "right-box">
+                    <div class="margin"></div>
+                    <div class="login-col">
+                        <h2>Login</h2>
+                        <div class="login-box">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="ID">
+                                <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
+                                <div class="button-container">
+                                    <a href="{% url 'signup' %}"><button type="button">회원가입</button></a> <button type="submit">로그인</button>
+                                </div>
+                                
+                            </form>
+                        </div>
                         
                     </div>
                     
+                    
                 </div>
-                <div class="margin"></div>
-                
-                
             </div>
+            
         </div>
+        
     </main>
-
     <script src="{% static 'accounts/js/login.js' %}"></script>
 </body>
 </html>

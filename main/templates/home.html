@@ -1,49 +1,88 @@
 <!--main/templates/home.html-->
 
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<form action="{% url 'search' %}" method="post"> {% csrf_token %}
+<!-- <form action="{% url 'search' %}" method="post"> {% csrf_token %}
     <input type="hidden" name="category" label="Category" value="{{category}}">
     <input type="text" name="search_word" label="Search Word">
     <input type="submit" value="Submit" class="btn btn-primary btn-sm">
-</form>
+</form> -->
 
 
-    <br>
-    <hr>
-{% if posts_participated %}
-    <h3>참가중인 공구 채팅방</h3>
-    {% for post in posts_participated %}
-        <h2><a href="{% url 'chat:room' room_number=post.pk %}">{{ post.title }}</a></h2>
-    {% endfor %}
-{% endif %}
-
-<br>
-<hr>
-
-{% if posts_list %}
+<!-- {% if posts_list %}
     {% for post in posts_list %}
         <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
         <p>{{post.pub_date}}</p>
         <p>{{post.body|linebreaks}}</p>
         <hr>
     {% endfor %}
-{% elif search_term %}<!-- 검색란이 공란인지 확인-->
+{% elif search_term %} 검색란이 공란인지 확인
     <b><i>Search Word({{ search_term }}) Not Found</i></b>
     <hr>
-{% endif %}
+{% endif %} -->
 
-{% if posts_orderby_deadline %}
-    <h3>마감임박 상품</h3>
-    <br>
 
-    {% for post in posts_orderby_deadline %}
-        <h2><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h2>
-        <p>{{post.pub_date}}</p>
-        <p>{{post.body|linebreaks}}</p>
-        <hr>
-    {% endfor %}
-{% endif %}
 
+
+<!-- /////////////////////////////////////////////// -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Main</title>
+
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    <!-- 여기부터 메인 -->
+    <main class="main-main"></main>
+    <!-- 애니메이션 화면  -->
+        <div class="animation">
+            <h1>현명한, 저렴한, 낭비없는 소비라이프</h1>
+            <img class = "online" src = "{% static 'main/img/online.png' %}" alt = "delivery">
+            <img class = "delivery" src = "{% static 'main/img/delivery.png' %}" alt = "delivery">
+            <img class = "offline" src = "{% static 'main/img/offline.png' %}" alt = "delivery">
+            
+        </div>
+
+        
+            <div class="first">
+                <a href="{% url 'home_category' 'Offline' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
+                <a href="{% url 'home_category' 'Online' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
+                <a href="{% url 'home_category' 'Delivery' %}"><div class="box2"><img src="{% static 'main/img/online.png' %}" alt=""></div></a>
+            </div>
+
+            <div class="second">
+                <h2>참여중인 대기방</h2>
+                <div class="my-group">
+                    {% if posts_participated %}
+                        {% for post in posts_participated %}
+                        <a href="{% url 'detail' pk=post.pk %}"><div class="my-room"><b>{{ post.category }}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} 3/4  <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div></a>
+                             
+                            <!--데이터 넣고 확인 필요-->
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+            </div>
+
+            <div class="third">
+                <h2>인기 대기방</h2>
+                <div class = "rec-room-list"></div>
+                {% if posts_orderby_deadline %}
+                    {% for post in posts_orderby_deadline %}
+                    <a href="{% url 'detail' pk=post.pk %}"><div class="rec-room"> <b>{{post.category}}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} 3/4 </div></a>
+                    {% endfor %}
+                {% endif %}
+                
+            </div>
+            
+
+    </main>
+    <script src="{% static 'main/js/main.js' %}"></script> 
+</body>
 {% endblock %}
+</html>

@@ -17,17 +17,19 @@
     
 }
 body{
-    background-color: #fefdf3;
+    background-color: #fbfaf6;
 }
 .big-box{
     display: flex;
     overflow: hidden;
     height: 70vh;
     position:relative;
-    width: 30%;
-    margin: 10vh 35vw 0 35vw;
-    background-color: #fff;
-    border: dotted rgb(232, 241, 181);
+    width: 25%;
+    margin: 10vh 37.5vw 0 37.5vw;
+    background-color: #fbfaf9;
+    border: #9dc39c 4px;
+    border-style:solid;
+    border-radius: 2px;
 }
 form{
     display: flex;
@@ -37,7 +39,7 @@ form{
 }
 .first{
     height: 70vh;
-    width: 30vw;
+    width: 25vw;
     background-color: inherit;
     padding: 40px;
 }
@@ -52,7 +54,7 @@ input{
     margin: 15px 0 0px 0 ;
     width: 230px;
     height: 40px;
-    border: 2.7px solid rgb(232, 241, 181);
+    border: 2.7px solid #9dc39c;
     border-radius: 3px;
     background-color: #fff;
     
@@ -63,13 +65,13 @@ input:focus{
     outline:0;
 }
 input::placeholder{
-    color: rgb(232, 241, 181);
+    color: #9dc39c;
 }
 button{
     background-color: #fff;
-    border: solid rgb(232, 241, 181);
+    border: solid #9dc39c;
     border-radius: 2px;
-    color: rgb(232, 241, 181);
+    color: #9dc39c;
     cursor:pointer;
     box-shadow: -0.4px -0.4px ;
     padding: 5px;
@@ -79,19 +81,19 @@ button:active{
 }
 .second{
     height: 70vh;
-    width: 30vw;
+    width: 25vw;
     background-color: inherit;
     padding: 40px;
 }
 .third{
     height: 70vh;
-    width: 30vw;
+    width: 25vw;
     background-color: inherit;
     padding: 40px;
 }
 .fourth{
     height: 70vh;
-    width: 30vw;
+    width: 23vw;
     background-color: inherit;
     padding: 40px;
     text-align: center;
