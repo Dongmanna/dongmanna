@@ -20,7 +20,7 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
-    region = models.CharField(max_length=50)
+    region = models.CharField(max_length=50, blank=True, null=True)
     item = models.CharField(max_length=50)
     limit = models.PositiveIntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])

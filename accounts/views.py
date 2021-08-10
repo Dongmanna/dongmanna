@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 def signup_view(request):
     # 로그인한 유저는 접근 금지
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('home', 'All')
 
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -22,7 +22,7 @@ def signup_view(request):
             person.save()
             # 자동 login
             login(request, user)
-            return redirect('home')
+            return redirect('home', 'All')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form':form})
@@ -31,7 +31,7 @@ def signup_view(request):
 def login_view(request):
     # 로그인한 유저는 접근 금지
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('home', 'All')
 
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
@@ -42,7 +42,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 # 원래 가려고 했던 페이지로 이동하거나 home으로 이동
-                return redirect(request.GET.get('next') or 'home')
+                return redirect(request.GET.get('next') or 'home', 'All')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})

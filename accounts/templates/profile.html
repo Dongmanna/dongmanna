@@ -89,4 +89,10 @@
 
 {% endblock %}
 
-</html>
+
+{% if user == user_info %}
+<div>
+<a href="{% url 'edit_profile' %}">프로필 수정</a>
+ {% endif %}
+ <a href="{% url 'home' 'All' %}">홈으로 가기</a>
+
