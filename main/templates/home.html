@@ -23,13 +23,7 @@
     <!-- 여기부터 메인 -->
     <main class="main-main"></main>
     <!-- 애니메이션 화면  -->
-        <div class="animation">
-            <h1>현명한, 저렴한, 낭비없는 소비라이프</h1>
-            <img class = "online" src = "{% static 'main/img/online.png' %}" alt = "delivery">
-            <img class = "delivery" src = "{% static 'main/img/delivery.png' %}" alt = "delivery">
-            <img class = "offline" src = "{% static 'main/img/offline.png' %}" alt = "delivery">
-            
-        </div>
+        
         <a href="{% url 'new'  %}">작성</a>
 
         
@@ -109,7 +103,7 @@
             
 
     </main>
-    <script src="{% static 'main/js/main.js' %}"></script> 
+     
 </body>
 {% endblock %}
 
