@@ -10,26 +10,21 @@ from chat.views import sendNotice
 
 # CRUD
 
-def home(request):
+def home(request, category):
+    # 카테고리별 게시글
+    if category == 'All':
+        posts_list = Post.objects.all()
+    else:
+        posts_list = Post.objects.all().filter(category=category)
     # 참가중인 채팅방
-    posts_participated = request.user.profile.post_participated.all
-    # 마감임박 글
-    posts_list = Post.objects.all()
-    posts = Post.objects.exclude(deadline = None)
-    for post in posts_list:
-        if post.members.count() != post.limit - 1:
+    posts_participated = request.user.profile.post_participated.all()
+    # 마감임박 게시글
+    posts = Post.objects.all()
+    for post in posts:
+        if post.members.count() != post.limit - 1 or posts_participated.filter(pk=post.pk):
             posts=posts.exclude(pk=post.pk)
     posts_orderby_deadline = posts.order_by('deadline')
-    return render(request, 'home.html', {'posts_participated': posts_participated, 'posts_orderby_deadline': posts_orderby_deadline})
-
-
-# category별 게시글 확인
-def home_category(request, category):
-    if category == 'All':
-        posts = Post.objects.all()
-    else:
-        posts = Post.objects.all().filter(category=category)
-    return render(request, 'home.html', {'posts_list': posts, 'category': category})
+    return render(request, 'home.html', {'posts_list': posts_list, 'posts_participated': posts_participated, 'posts_orderby_deadline': posts_orderby_deadline, 'category': category})
 
 
 @login_required
@@ -88,7 +83,7 @@ def delete(request, pk):
         return redirect('detail', pk=post.pk)
 
     post.delete()
-    return redirect('home')
+    return redirect('home', 'All')
 
 
 # Search
