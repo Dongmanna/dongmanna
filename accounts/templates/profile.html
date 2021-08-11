@@ -1,37 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load bootstrap4 %}
+{% load static %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-3">
-            <h1> 
-            {% if user_info.profile.my_image %}
-            <img src="{{ user_info.profile.my_image.url }}" width= 70, 
-                 alt="{{ user_info.profile.my_image}}">
-            {% endif %}
-            유저 아이디:{{ user_info.username }}
-            </h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mypage</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+</head>
+<main>
+    <div id="container">
+        <div id="incontainer">
+            <section>
+                <div class="phocontainer">
+                    <div class="myimg">
+                        <div class="photo">
+                            {% if user_info.profile.my_image %}
+                            <img src="{{ user_info.profile.my_image.url }}" alt="{{ user_info.profile.my_image}}"
+                                width=150px, height=150px>
+                            {% else %}
+                            <img src="{% static 'main/img/profile.png' %}" alt="{{ user_info.profile.my_image}}"
+                                width=150px, height=150px>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="editprofile">
+                    {% if user == user_info %}
+                    <a href="{% url 'edit_profile' %}">프로필 수정</a>
+                    {% endif %}
+                </div>
+            </section>
+            <section id="myinfo">
+                <div class="divinfo">
+                    <p class="ininfo">이름</p>
+                    <h2 class="info">{{ user_info.username }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">주소</p>
+                    <h2 class="info">{{ user_info.profile.address }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">닉네임</p>
+                    <h2 class="info">{{user_info.profile.nickname}}</h2>
+                </div>
+
+            </section>
         </div>
-        <div class="col-9">
-            <div>
-                <strong>유저 닉네임:{{ user_info.profile.nickname }}</strong>
+        <!-- <div class="tabletitle">
+            <b>지난 거래 내역</b>
+        </div> -->
+
+
+        <!-- <div class="last_table">
+            {% for post in posts_list %}
+            <div class="intable">
+                <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 
+                <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p>
+                <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 -->
+        <!-- <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p> 
+                <p>{{post.pub_date}}</p>
+                <p> 작성자 </p>
+                <p> 품목 </p>
+                <p> 인원 </p>
+                <p>{{post.body|linebreaks}}</p>
+                <b class="mytext"> 내가 쓴 글 </b> 상속받아서 바꿔야 함 
+                <button class="review" id="modal_open">리뷰 작성</button>
+                {% endfor %}
             </div>
-            <div>
-                지역:{{ user_info.profile.address }}
-            </div>
+        </div> -->
+    </div>
+</main>
+<!-- <div id="modal">
+    <div class="modal_content">
+        <button id="close">❌</button>
+        <div class="reviews">
+            <h1>리뷰 작성하기</h1>
+            <br>
+            <p>❤❤❤❤❤</p>
+            <br><br>
+            <input type="text" placeholder="자유롭게 작성해주세요.">
+            <button type="button" id="modal_close_btn" onclick="submit">제출하기</button>
         </div>
     </div>
+    <div class="modal_layer"></div>
+</div>
+<script>
+    document.getElementById("modal_open").onclick = function () {
+        document.getElementById("modal").style.display = "block";
+    }
+    document.getElementById("close").onclick = function () {
+        document.getElementById("modal").style.display = "none";
+    }
+</script> -->
+</body>
 
-    <hr>
-    <h2>내가 참여한 공동구매</h2>
-    {% for post in posts_list %}
-        <h3><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></h3>
-        <p>{{post.pub_date}}</p>
-        <p>{{post.body|linebreaks}}</p>
-        <hr>
-    {% endfor %}
+{% endblock %}
 
-    {% if user == user_info %}
-    <div>
-        <a href="{% url 'edit_profile' %}">프로필 수정</a>
+
+<!-- {% if user == user_info %}
+
+    <a href="{% url 'edit_profile' %}">프로필 수정</a>
     {% endif %}
-    <a href="{% url 'home' 'All' %}">홈으로 가기</a>
+    <a href="{% url 'home' 'All' %}">홈으로 가기</a> -->

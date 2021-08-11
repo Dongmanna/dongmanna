@@ -1,0 +1,215 @@
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'S-CoreDream-5Medium';
+}
+
+main{
+    margin-top: 6%;
+    
+    text-align: space-around;
+}
+
+
+.writer{
+    margin-left: 80%;
+    width: 200px;
+    height: 50px;
+    
+}
+.boxtop b{
+    margin-left: 10%;
+    font-size: 17pt;
+}
+
+.inputs{
+    margin: 0 auto;
+    margin-top:30px;
+    
+    height: 200px;
+    width: 60%;;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    
+}
+
+.name_input{
+    width: 400px;
+    height: 40px;
+}
+
+
+.input{
+
+    margin-top: 3px;
+    width: 80%;
+    height: 30px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2px solid #9dc39c;
+}
+
+#location{
+    width: 150px;
+}
+#item{
+    width:150px;
+}
+#people{
+    width:150px;
+}
+
+input:focus{
+    border: 2px solid #156917;
+    outline:0;
+}
+input::placeholder{
+    color: #9dc39c;
+    position:relative;
+    left:45%;
+    font-size: 15pt;
+}
+
+
+#bodytext{
+    
+    
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 60%;
+    height: 200px;
+}
+
+.member{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    width: 60% ;
+    margin: 0 auto;
+    margin-top: 1%;
+    padding-left: 3vw;
+    
+    /* border:solid; */
+}
+
+
+
+.idimg{
+    width: 170px;
+    display: flex;
+}
+#part-text{
+    margin-left:25%;
+    color:#9dc39c;
+}
+.participant{
+    width: 15%;
+    margin: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.memimg{
+    border-radius: 100%;
+    border-style: solid;
+    overflow: hidden;
+    width: 40px;
+    height:40px;
+    margin-left:3%;
+    margin-bottom: 0.7%;
+    
+}
+
+
+.btmbox{
+    margin-left:65%;
+    
+    display:flex;
+    
+    background-color: transparent;
+    margin-bottom: 10vh;
+    
+}
+.btn{
+    margin-right: 10px;
+}
+
+button:active{
+    box-shadow: 1px 1px;
+}
+
+.writtenby{
+    width: 40%;
+    border: 2px solid #9dc39c;
+}
+
+
+.chatin{
+    width: 150px;
+    height: 50px;
+    margin-top: 13%;
+    margin-right: 0px;
+    border: solid #9dc39c;
+    border-radius: 2px;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+}
+
+
+.text3{
+    margin-top: 5%;
+}
+
+.infos{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 500px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.info_detail{
+    padding-top: 0;
+    margin-top:0;
+    float: left;
+    width: 350px;
+}
+
+.info_detail1{
+    padding-top: 0;
+    margin-top:0;
+    float: left;
+    width: 350px;
+    height: 50px;
+}
+
+input{
+    margin-left: 1%;
+    margin-top: 3%;
+}
+
+#how{
+    width: 330px;
+    height: 200px;
+    padding-left: 10%;
+    margin-left: 10%;
+}
+
+#etc{
+    width: 330px;
+    height: 200px;
+    padding-left: 10%;
+    margin-left: 10%;
+}

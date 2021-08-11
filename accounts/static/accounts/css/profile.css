@@ -1,0 +1,267 @@
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'S-CoreDream-5Medium';
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fbfaf6;
+}
+#container{
+    margin-left:auto;
+    margin-right:auto;
+    width: 800px;
+    padding: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+#incontainer{
+    display: flex;
+    margin-top:3%;
+    justify-content: center;
+}
+#myinfo{
+    margin-left: 10%;
+    font-size: 10pt;
+}
+
+section{
+    height:65%;
+    width: 30%;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+.myimg{
+    margin-top: 10%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    padding: 45px;
+    border-radius: 100%;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
+
+.photo{
+    width:150px;
+    height:150px;
+}
+.info{
+    margin-top: 15%;
+    width: 250px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #9dc39c;
+    font-size: 13pt;
+}
+
+.ininfo{
+    position: relative;
+    top:20px;
+    width:80px;
+    font-size: 15pt;
+}
+
+.divinfo{
+    display: flex;
+    width: 350px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.editprofile{
+    margin-top: 8%;
+    margin-left: 19%;
+    width:fit-content;
+    justify-content: center;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 3px solid #9dc39c;
+    font-size: 15pt;
+}
+
+.loc{
+    width: auto;
+    height: 30px;
+    margin-left: 30%;
+    margin-top: 50%;
+    cursor:pointer;
+}
+.tabletitle{
+    margin-top: 7%;
+    margin-bottom: 3%;
+    margin-left:0%;
+}
+
+
+
+
+.last_table{
+    position: relative;
+    top:30%;
+    display:flex;
+    width: 800px;
+    height: 500px;
+    background-color: inherit;
+    border:solid #9dc39c;
+    overflow:scroll;
+}
+
+.last_table::-webkit-scrollbar {
+    width: 6px;
+    height: 90%;
+    margin-right: 30px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #9dc39c;
+}
+
+.intable{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    width: 800px;
+    height: 50px;
+    background-color: #fff;
+    justify-content: space-evenly;
+    border-radius: 7px;
+    border: solid #9dc39c 2px;
+    border-radius:5px;
+}
+.intable p{
+    background: inherit;
+}
+
+.mytext{
+    position:relative;
+    width: 100px;
+    text-align: center; 
+    line-height: 40px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: transparent;
+    color:#156917;
+}
+
+.review{
+    position: relative;
+    top:8px;
+    width:85px;
+    height: 35px;
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 2px;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+}
+
+.review button:active{
+    box-shadow: 1px 1px;
+}
+
+#modal{
+    display:none;
+    position:absolute;
+    width:50%;
+    height:50%;
+    z-index:1;
+}
+
+#modal input{
+    width:300px;
+    height:150px;
+    background-color: transparent;
+}
+
+#modal_close_btn{
+    display: flex;
+    position: relative;
+    top:40px;
+    left:75%;
+    width:100px;
+}
+#modal .modal_content{
+    width:500px;
+    height: 500px;
+    margin-top:-100%;
+    margin-left:60%;
+    background:#FFFFFF;
+    border:5px solid #156917;
+    border-radius:10px;
+}
+#modal h1{
+    background-color: transparent;
+    display:inline-block;
+    position: relative;
+    left:25%;
+}
+#modal p{
+    background-color: transparent;
+    display:inline-block;
+    position: relative;
+    left:40%;
+}
+.reviews{
+    padding-top:0;
+    font-size: 15pt;
+    background-color: transparent;
+}
+
+.modal_content button{
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 2px;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+    justify-content: center;
+}
+.modal_content button:active{
+    box-shadow: 1px 1px;
+}
+
+#close{
+    width:30px;
+    margin-left: 92%;
+    margin-top:2%;
+}
+.reviews input{
+    width: 450px;
+    position: relative;
+    left:20%;
+}
+
+.reviews input::placeholder{
+    position: relative; 
+    left: 27%;
+}
+#modal .modal_layer{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    z-index:-1;
+}

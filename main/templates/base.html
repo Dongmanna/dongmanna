@@ -1,30 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
 </head>
+
 <body>
     <header>
-        <img class="logo" src="{% static 'main/img/logo.png' %}" alt="Logo">
-        <!-- 프로필 이미지 base.html에서 받아오기...... -->
-        <div class="profile-container"><img class="profile-img" src="{% static 'main/img/profile.png' %}" alt="profile"></div>
-        <div class="nickname"> "{{ user.profile }}" 님 환영해요!</div>
+        <a href="{% url 'home' 'All' %}">
+            <b class="logo">동네에서 만나요</b>
+        </a>
         
-        <a href="{% url 'logout' %}"><button class="logout">마이페이지</button></a>
+        <!-- 프로필 이미지 base.html에서 받아오기...... -->
+        
+        <div class="profile-container">
+            {%if user.profile.my_image%}
+            <img class="profile-img" src="{{ user.profile.my_image }}" alt="profile"> <!--여기 이미지가 안받아지네.. 좀따 확인-->
+            {% else %}
+            <img class="profile-img" src="{% static 'main/img/profile.png' %}" alt="profile">
+            {%endif%}
+        </div>
+        <div class="nickname"> "{{ user.profile.nickname }}" 님 환영해요!</div>
+
+        <a href="{% url 'profile' username=user %}"><button class="logout">마이페이지</button></a>
         <a href="{% url 'logout' %}"><button class="logout">로그아웃</button></a>
-
-
+        
     </header>
-    
+
     {% block content %}
     {% endblock %}
-    
+
 </body>
+
 </html>
-
-
-    

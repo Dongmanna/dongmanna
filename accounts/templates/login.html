@@ -18,8 +18,8 @@
             
             <div class = "login-container-left">
                 <div class = "description">
-                <button class="prev" type="button" >prev</button> 
-                <button class="next" type="button" >next</button>
+                <button class="prev" type="button" > < </button> 
+                <button class="next" type="button" > > </button>
                 <div class="carousel">
                     <img src="{% static 'accounts/img/login1.png' %}" alt="">
                     <img src="{% static 'accounts/img/login2.png' %}" alt="">
@@ -45,7 +45,7 @@
                                 <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="ID">
                                 <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
                                 <div class="button-container">
-                                    <a href="{% url 'signup' %}"><button type="button">회원가입</button></a> <button type="submit">로그인</button>
+                                    <button type="submit">로그인</button><a href="{% url 'signup' %}"><button type="button">회원가입</button></a> 
                                 </div>
                                 
                             </form>
