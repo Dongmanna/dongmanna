@@ -41,7 +41,7 @@
                     
                         <!-- 카테고리 -->
                     <div class="category-box">
-                        <a href="{% url 'home' 'All' %}">전체글</a>
+                        <a href="{% url 'home' 'All' %}" >전체글</a>
                         <a href="{% url 'home' 'Offline' %}">오프라인</a>
                         <a href="{% url 'home' 'Online' %}">온라인</a>
                         <a href="{% url 'home' 'Delivery' %}">배달</a>
@@ -101,12 +101,15 @@
             </div>
 
             <div class="third">
-                <h2>인기 대기방</h2>
+                <h2>추천 대기방</h2>
                 <div class = "rec-room-list"></div>
                 {% if posts_orderby_deadline %}
                     {% for post in posts_orderby_deadline %}
                     <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b> &nbsp;&nbsp; {{ post.title }} &nbsp;&nbsp;{{ post.author }} &nbsp;&nbsp; {{ post.item }}&nbsp;&nbsp; {{ post.members.count }}/{{ post.limit }} </a>
                     {% endfor %}
+                {%else%}
+                <br>
+                    아직 추천해드릴 대기방이 없어요 ㅠㅠ 새로 글을 써보시는 건 어떨까요? 
                 {% endif %}
                 
             </div>

@@ -82,25 +82,7 @@
     transition: transform 0.4s;
     
 }
-.prev{
-    float: left;
-    z-index: 1;
-    height: 80vh;
-    position: absolute;
-    left:0;
-    
-    opacity:0;
-    width: 20%;
-}
-.next{
-    float: left;
-    height: 80vh;
-    z-index: 1;
-    position: absolute;
-    right:0;
-    opacity:0;
-    width: 20%;
-}
+
 
 .login-main img{
     width: 100%;    
@@ -190,6 +172,32 @@ button:active{
     justify-content:space-evenly;
     margin-top:30px;
 
+}
+.prev{
+    float: left;
+    z-index: 1;
+    height: 80vh;
+    position: absolute;
+    left:0;
+    font-size: 50px;
+    font-weight: 400;
+    background-color: transparent;
+    width: 20%;
+    border: none;
+    color:#9dc39c;
+}
+.next{
+    float: left;
+    height: 80vh;
+    z-index: 1;
+    position: absolute;
+    right:0;
+    font-size: 50px;
+    font-weight: 400;
+    background-color: transparent;
+    width: 20%;
+    border: none transparent;
+    color:#9dc39c;
 }
 
 
