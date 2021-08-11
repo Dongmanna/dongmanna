@@ -8,7 +8,6 @@ from django.views.generic import FormView
 from django.contrib.auth.decorators import login_required
 from chat.views import sendNotice
 
-# CRUD
 
 def home(request, category):
     # 카테고리별 게시글
@@ -26,6 +25,8 @@ def home(request, category):
     posts_orderby_deadline = posts.order_by('deadline')
     return render(request, 'home.html', {'posts_list': posts_list, 'posts_participated': posts_participated, 'posts_orderby_deadline': posts_orderby_deadline, 'category': category})
 
+
+# CRUD
 
 @login_required
 def new(request):
@@ -115,6 +116,7 @@ class SearchFormView(FormView):
 
 
 # 공구 참여
+
 @login_required
 def post_participated_toggle(request, pk):
     post = get_object_or_404(Post, pk=pk)
