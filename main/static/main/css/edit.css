@@ -48,7 +48,8 @@ label {
 }
 
 input{
-    margin-top: 3px;
+    font-size: 14pt;
+    margin-top: 10px;
     margin-left: 3%;
     width: 250px;
     height: 35px;
@@ -68,12 +69,9 @@ select{
 }
 
 #id_title{
-    margin-right: 5%;
-    margin-left: 4%;
     margin-top: 2%;
-    position:relative;
-    left:5%;
-    height: 30px;
+    margin-left:1%;
+    height: 45px;
     width: 600px;
 }
 
@@ -101,6 +99,7 @@ select{
 }
 
 #id_body{
+    margin-top:3%;
     border: 2.7px solid #9dc39c;
     width:700px;
     height:200px;
