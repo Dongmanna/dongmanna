@@ -25,35 +25,37 @@ header{
     height:8vh;
     padding-top: 2vh;
     padding-left: 3vw;
+    border-bottom:#9dc39c 1px;
     
     
     
 }
+a:visited{
+    color:black;
+    
+}
 .logo{
-    margin-right: 60vw;
-    width: 3vw;
+    margin-right: 50vw;
+    font-size: 24px;
     
-    
+    z-index:3;
 }
 .profile-img{
     width: 3vw;
     height: 5vh;
     
-    margin-right: 1vw;
+    
 }
 .profile-container{
     width:6vh;
     height:6vh;
     border-radius: 100%;
     overflow: hidden;
-    
+    margin-right:1vw;
+    /* border:solid 1px; */
 
 }
-header button{
-    border:none;
-    
-    background-color: inherit;
-}
+
 
 .nickname{
     
@@ -90,6 +92,9 @@ button{
     
     padding: 5px;
 }
-.logout{
-    border:solid;
+
+header button{
+    border:none;
+    
+    background-color: inherit;
 }

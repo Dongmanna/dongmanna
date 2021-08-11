@@ -24,6 +24,9 @@
                             {% if user_info.profile.my_image %}
                             <img src="{{ user_info.profile.my_image.url }}" alt="{{ user_info.profile.my_image}}"
                                 width=150px, height=150px>
+                            {% else %}
+                            <img src="{% static 'main/img/profile.png' %}" alt="{{ user_info.profile.my_image}}"
+                                width=150px, height=150px>
                             {% endif %}
                         </div>
                     </div>
@@ -52,12 +55,14 @@
         </div>
         <!-- <div class="tabletitle">
             <b>지난 거래 내역</b>
-        </div>
+        </div> -->
 
 
-        <div class="last_table">
+        <!-- <div class="last_table">
             {% for post in posts_list %}
             <div class="intable">
+                <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 
+                <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p>
                 <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 -->
         <!-- <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p> 
                 <p>{{post.pub_date}}</p>
@@ -65,14 +70,14 @@
                 <p> 품목 </p>
                 <p> 인원 </p>
                 <p>{{post.body|linebreaks}}</p>
-                <b class="mytext"> 내가 쓴 글 </b> 상속받아서 바꿔야 함 -->
-        <!-- <button class="review" id="modal_open">리뷰 작성</button> -->
-        {% endfor %}
-    </div>
-    </div>
+                <b class="mytext"> 내가 쓴 글 </b> 상속받아서 바꿔야 함 
+                <button class="review" id="modal_open">리뷰 작성</button>
+                {% endfor %}
+            </div>
+        </div> -->
     </div>
 </main>
-<div id="modal">
+<!-- <div id="modal">
     <div class="modal_content">
         <button id="close">❌</button>
         <div class="reviews">
@@ -93,14 +98,14 @@
     document.getElementById("close").onclick = function () {
         document.getElementById("modal").style.display = "none";
     }
-</script>
+</script> -->
 </body>
 
 {% endblock %}
 
 
-{% if user == user_info %}
-<div>
+<!-- {% if user == user_info %}
+
     <a href="{% url 'edit_profile' %}">프로필 수정</a>
     {% endif %}
-    <a href="{% url 'home' 'All' %}">홈으로 가기</a>
+    <a href="{% url 'home' 'All' %}">홈으로 가기</a> -->

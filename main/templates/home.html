@@ -23,11 +23,6 @@
     <!-- 여기부터 메인 -->
     <main class="main-main"></main>
     <!-- 애니메이션 화면  -->
-            <!-- <div class="first">
-                <a href="{% url 'home' 'Offline' %}"><div class="box2"> <img src="{% static 'main/img/offline2.jpg' %}" alt=""></div></a>
-                <a href="{% url 'home' 'Online' %}"><div class="box2"><img src="{% static 'main/img/online2.jpg' %}" alt=""></div></a>
-                <a href="{% url 'home' 'Delivery' %}"><div class="box2"><img src="{% static 'main/img/delivery2.png' %}" alt=""></div></a>
-            </div> -->
 
             <div class="first">
                         <!-- 검색창 -->
@@ -36,16 +31,16 @@
                         {% csrf_token %}
                         <input type="hidden" name="category" label="Category" value="{{category}}">
                         <div class= "search-box">
-                            <input type="text" name="search_word" label="Search Word" placeholder="검색어를 입력해주세요.">
+                            <input type="text" name="search_word" label="Search Word" placeholder="공동구매할 상품을 검색하세요.">
                             <button type="submit" value="Submit" > 검색 </button>  
                         </div>
                     </form>
-                    <a href="{% url 'new'  %}"><button style="align-self: flex-end;">글쓰러 가기</button></a>
+                    <a href="{% url 'new'  %}"><button style="position:absolute; right:20%; ">글쓰러 가기</button></a>
 
                     
                         <!-- 카테고리 -->
                     <div class="category-box">
-                        <a href="{% url 'home' 'All' %}">전체글</a>
+                        <a href="{% url 'home' 'All' %}" >전체글</a>
                         <a href="{% url 'home' 'Offline' %}">오프라인</a>
                         <a href="{% url 'home' 'Online' %}">온라인</a>
                         <a href="{% url 'home' 'Delivery' %}">배달</a>
@@ -58,8 +53,8 @@
                         {% if posts_list %}
                         {% for post in posts_list %}
                         <a href="{% url 'detail' pk=post.pk %}"  class="in-result-box">
-                            <b>{{ post.category }}</b>  
-                            {{ post.title }} {{ post.author }}  {{ post.item }} {{ post.members.count }}/{{ post.limit }}  
+                            <b>{{ post.category }}</b>  &nbsp;&nbsp;
+                            {{ post.title }}&nbsp;&nbsp; {{ post.author }} &nbsp;&nbsp; {{ post.item }} &nbsp;&nbsp;{{ post.members.count }}/{{ post.limit }}  
                         </a>
                             
 
@@ -82,17 +77,21 @@
                 <div class="my-group">
                     {% if posts_participated %}
                         {% for post in posts_participated %}
-                        <a   href="{% url 'detail' pk=post.pk %}">
+                        <a   href="{% url 'detail' pk=post.pk %}" >
                             <div class="my-room">
 
                                 <b>{{ post.category }}</b> 
-                                <span class="inline-texts">{{ post.title }}</span> 
-                                <span class="inline-texts">{{ post.author }} </span> 
-                                <span class="inline-texts">{{ post.item }} </span> 
+                                
+                                {{ post.title }}&nbsp;&nbsp;
+                                {{ post.author }} &nbsp;&nbsp;
+                                {{ post.item }} &nbsp;&nbsp;&nbsp;
                                 {{ post.members.count }}/{{ post.limit }}
-
-                                <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a>
+                                
+                                
+                                <div><a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div>
+                                
                             </div>
+                            
                         </a>
                         {% endfor %}
                     {% endif %}
@@ -101,12 +100,15 @@
             </div>
 
             <div class="third">
-                <h2>인기 대기방</h2>
+                <h2>추천 대기방</h2>
                 <div class = "rec-room-list"></div>
                 {% if posts_orderby_deadline %}
                     {% for post in posts_orderby_deadline %}
-                    <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b>  {{ post.title }} {{ post.author }}  {{ post.item }} {{ post.members.count }}/{{ post.limit }} </a>
+                    <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b> &nbsp;&nbsp; {{ post.title }} &nbsp;&nbsp;{{ post.author }} &nbsp;&nbsp; {{ post.item }}&nbsp;&nbsp; {{ post.members.count }}/{{ post.limit }} </a>
                     {% endfor %}
+                {%else%}
+                <br>
+                    아직 추천해드릴 대기방이 없어요 ㅠㅠ 새로 글을 써보시는 건 어떨까요? 
                 {% endif %}
                 
             </div>
