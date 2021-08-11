@@ -1,21 +1,23 @@
 .container{
-    height: 450px;
-    width: 500px;
+    height: 45%;
+    width: 40%;
     position:relative;
-    top:100px;
-    left: 25%;
+    top:150px;
+    left: 30%;
     border-radius: 3px;
     border: 2.7px solid #9dc39c;
+    padding-bottom: 3%;
 }
 form{
     margin-left: 20%;
-    margin-top:20%;
+    margin-top:15%;
     font-size: 15pt;
 }
 
 .save{
     margin-left:80%;
-    margin-top: 10%;
+    margin-top: 8%;
 }
-
-
+body{
+    background-color:#fbfaf6;
+}

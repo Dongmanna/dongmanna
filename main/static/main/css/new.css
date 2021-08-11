@@ -28,6 +28,13 @@ label{
 
 #item{
     width:200px;
+    position:relative;
+    left:36px;
+}
+
+#link{
+    position: relative;
+    left:35px;
 }
 
 #title{
@@ -70,6 +77,8 @@ input{
     background-color: #fff;
     border: 2.7px solid #9dc39c;
 }
+
+
 textarea{
     border: 2.7px solid #9dc39c;
 }
@@ -81,12 +90,11 @@ select{
     border-radius: 3px;
     background-color: #fff;
     border: 2.7px solid #9dc39c;
-
 }
 
 .dead{
     position: relative;
-    right: 39px;
+    left: 0px;
 }
 
 #bodytext{

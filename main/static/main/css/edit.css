@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'S-CoreDream-5Medium';
+}
+
+form{
+    height: 500px;
+    display: flex;
+}
+
+p{
+    margin-top:3%;
+    width:fit-content;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container{
+    height: 750px;
+    width: 900px;
+    position:relative;
+    top:70px;
+    border-radius: 3px;
+    border: 2.7px solid #9dc39c;
+    margin: 0 auto;
+}
+
+.inputs {
+    margin-top:0px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+label {
+    width:100px;
+    margin-top:3%;
+    font-size: 15pt;
+}
+
+input{
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-left: 3%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
+
+select{
+    margin-top: 3px;
+    margin-left: 2%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
+
+#id_title{
+    margin-top: 2%;
+    margin-left:1%;
+    height: 45px;
+    width: 600px;
+}
+
+.save{
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 75%;
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 0;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+}
+#id_category{
+    margin-top: 3px;
+    margin-left: 2%;
+    width: 250px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 2.7px solid #9dc39c;
+}
+
+#id_body{
+    margin-top:3%;
+    border: 2.7px solid #9dc39c;
+    width:700px;
+    height:200px;
+}
+
+.inform{
+    margin-left:5%;
+    margin-top:3%;
+    justify-content: space-around;
+    align-items: space-around;
+}

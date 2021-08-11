@@ -11,14 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mypage</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
 </head>
 <main>
     <div id="container">
         <div id="incontainer">
             <section>
-                <div class = "phocontainer">
+                <div class="phocontainer">
                     <div class="myimg">
                         <div class="photo">
                             {% if user_info.profile.my_image %}
@@ -38,12 +38,19 @@
                 </div>
             </section>
             <section id="myinfo">
-                
-                <h4 class="info">아이디: {{ user_info.username }}</h4>
-                
-                <h2 class="info">지역: {{ user_info.profile.address }}</h2>
-                <h2 class="info"> 닉네임: {{user_info.profile.nickname}}</h2>
-                
+                <div class="divinfo">
+                    <p class="ininfo">이름</p>
+                    <h2 class="info">{{ user_info.username }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">주소</p>
+                    <h2 class="info">{{ user_info.profile.address }}</h2>
+                </div>
+                <div class="divinfo">
+                    <p class="ininfo">닉네임</p>
+                    <h2 class="info">{{user_info.profile.nickname}}</h2>
+                </div>
+
             </section>
         </div>
         <!-- <div class="tabletitle">
@@ -56,6 +63,8 @@
             <div class="intable">
                 <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 
                 <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p>
+                <b class=mytext>온라인 구매</b> 상속받아서 바꿔야 함 -->
+        <!-- <p> <a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a> </p> 
                 <p>{{post.pub_date}}</p>
                 <p> 작성자 </p>
                 <p> 품목 </p>
@@ -95,9 +104,8 @@
 {% endblock %}
 
 
-{% if user == user_info %}
+<!-- {% if user == user_info %}
 
-<a href="{% url 'edit_profile' %}">프로필 수정</a>
- {% endif %}
- <a href="{% url 'home' 'All' %}">홈으로 가기</a>
-
+    <a href="{% url 'edit_profile' %}">프로필 수정</a>
+    {% endif %}
+    <a href="{% url 'home' 'All' %}">홈으로 가기</a> -->
