@@ -19,7 +19,7 @@
         
         <div class="profile-container">
             {%if user.profile.my_image%}
-            <img class="profile-img" src="{{ user.profile.my_image }}" alt="profile"> <!--여기 이미지가 안받아지네.. 좀따 확인-->
+            <img class="profile-img" src="{{ user.profile.my_image.url }}" alt="profile"> <!--여기 이미지가 안받아지네.. 좀따 확인-->
             {% else %}
             <img class="profile-img" src="{% static 'main/img/profile.png' %}" alt="profile">
             {%endif%}
