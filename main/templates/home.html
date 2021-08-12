@@ -14,42 +14,44 @@
 
 
 <head>
-
+    
     <title>Main</title>
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
-
 <body>
     <!-- 여기부터 메인 -->
     <main class="main-main"></main>
     <!-- 애니메이션 화면  -->
 
-    <div class="first">
-        <!-- 검색창 -->
+            <div class="first">
+                        <!-- 검색창 -->
+                    
+                    <form action="{% url 'search' %}" method="post" class="search-container"> 
+                        {% csrf_token %}
+                        <input type="hidden" name="category" label="Category" value="{{category}}">
+                        <div class= "search-box">
+                            <input type="text" name="search_word" label="Search Word" placeholder="공동구매할 상품을 검색하세요.">
+                            <button type="submit" value="Submit" > 검색 </button>  
+                        </div>
+                    </form>
+                    <a href="{% url 'new'  %}"><button style="position:absolute; right:12%; ">글쓰러 가기</button></a>
 
-        <form action="{% url 'search' %}" method="post" class="search-container">
-            {% csrf_token %}
-            <input type="hidden" name="category" label="Category" value="{{category}}">
-            <div class="search-box">
-                <input type="text" name="search_word" label="Search Word" placeholder="공동구매할 상품을 검색하세요.">
-                <button type="submit" value="Submit"> 검색 </button>
-            </div>
-        </form>
-        <a href="{% url 'new'  %}"><button style="position:absolute; right:20%; ">글쓰러 가기</button></a>
-
-
-        <!-- 카테고리 -->
-        <div class="category-box">
-            <a href="{% url 'home' 'All' %}">전체글</a>
-            <a href="{% url 'home' 'Offline' %}">오프라인</a>
-            <a href="{% url 'home' 'Online' %}">온라인</a>
-            <a href="{% url 'home' 'Delivery' %}">배달</a>
-        </div>
-
-        <!-- 검색결과 박스 -->
-        <div class="result-box">
-            {% if posts_list %}
+                    
+                        <!-- 카테고리 -->
+                    <div class="category-box">
+                        <a href="{% url 'home' 'All' %}" >전체글</a>
+                        <a href="{% url 'home' 'Offline' %}">오프라인</a>
+                        <a href="{% url 'home' 'Online' %}">온라인</a>
+                        <a href="{% url 'home' 'Delivery' %}">배달</a>
+                        
+                    </div>
+                
+                    <!-- 검색결과 박스 -->
+                    <div class="result-box">
+                        
+                        
+                        {% if posts_list %}
             {% for post in posts_list %}
             <div class="details">
                 <div class="detail_cate">
@@ -61,70 +63,71 @@
                     <a href="{% url 'detail' pk=post.pk %}" class="in-result-box2">
                         <p class = "t">{{ post.title }}</p>
                         <p class = "a">{{ post.author }}</p>
-                        <p class = "i"> {{post.item}}</p>
+                        <p class = "i"> [{{post.item}}]</p>
                         <p class = "m">{{ post.members.count }}/{{ post.limit}}</p>
                     </a>
                 </div>
             </div>
             {% endfor %}
 
-            {% elif search_term %}
-            <!--검색란이 공란인지 확인 -->
-            <b>"({{ search_term }})"에 대한 검색결과가 없습니다. 새로운 글을 작성해 보시는 건 어떨까요?</b>
-
-            {% endif %}
-        </div>
-
-
-    </div>
-
-
-    </div>
-
-    <div class="second">
-        <h2>참여중인 대기방</h2>
-        <div class="my-group">
-            {% if posts_participated %}
-            {% for post in posts_participated %}
-            <a href="{% url 'detail' pk=post.pk %}">
-                <div class="my-room">
-
-                    <b>{{ post.category }}</b>
-
-                    {{ post.title }}&nbsp;&nbsp;
-                    {{ post.author }} &nbsp;&nbsp;
-                    {{ post.item }} &nbsp;&nbsp;&nbsp;
-                    {{ post.members.count }}/{{ post.limit }}
-
-
-                    <div><a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div>
-
+                        {% elif search_term %} <!--검색란이 공란인지 확인 -->
+                        <b>"({{ search_term }})"에 대한 검색결과가 없습니다. 새로운 글을 작성해 보시는 건 어떨까요?</b>
+                        
+                        {% endif %}
+                    </div>
+                    
+                    
                 </div>
 
-            </a>
-            {% endfor %}
-            {% endif %}
-        </div>
 
-    </div>
+            </div>
+                
+            <div class="second">
+                <h2>참여중인 대기방</h2>
+                <div class="my-group">
+                    {% if posts_participated %}
+                        {% for post in posts_participated %}
+                        <a   href="{% url 'detail' pk=post.pk %}" >
+                            <div class="my-room">
 
-    <div class="third">
-        <h2>추천 대기방</h2>
-        <div class="rec-room-list"></div>
-        {% if posts_orderby_deadline %}
-        {% for post in posts_orderby_deadline %}
-        <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b> &nbsp;&nbsp; {{ post.title }}
-            &nbsp;&nbsp;{{ post.author }} &nbsp;&nbsp; {{ post.item }}&nbsp;&nbsp; {{ post.members.count }}/{{
-            post.limit }} </a>
-        {% endfor %}
-        {%else%}
-        <br>
-        아직 추천해드릴 대기방이 없어요 ㅠㅠ 새로 글을 써보시는 건 어떨까요?
-        {% endif %}
+                                <b>{{ post.category }}</b> 
+                                
+                                {{ post.title }}&nbsp;&nbsp;
 
-    </div>
+                                {{ post.author }} &nbsp;&nbsp;
 
+                                {{ post.item }} &nbsp;&nbsp;&nbsp;
+                                
+                                {{ post.members.count }}/{{ post.limit }}
+                                
+                                
+                                <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a>
+                                
+                            </div>
+                            
+                        </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+            </div>
+
+            <div class="third">
+                <h2>추천 대기방</h2>
+                <div class = "rec-room-list"></div>
+                {% if posts_orderby_deadline %}
+                    {% for post in posts_orderby_deadline %}
+                    <a href="{% url 'detail' pk=post.pk %}" class="rec-room"> <b>{{post.category}}</b> &nbsp;&nbsp; {{ post.title }} &nbsp;&nbsp;{{ post.author }} &nbsp;&nbsp; {{ post.item }}&nbsp;&nbsp; {{ post.members.count }}/{{ post.limit }} </a>
+                    {% endfor %}
+                {%else%}
+                <br>
+                    아직 추천해드릴 대기방이 없어요 ㅠㅠ 새로 글을 써보시는 건 어떨까요? 
+                {% endif %}
+                
+            </div>
+            
 
     </main>
 </body>
+
 {% endblock %}
