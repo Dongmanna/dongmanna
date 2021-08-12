@@ -75,8 +75,36 @@ input::placeholder{
     left:45%;
     font-size: 15pt;
 }
-
-
+.image-button{
+    height:40px;
+    margin-right:80px;
+    margin-top: 20px;
+    background-color: #c9e4c8;
+}
+.content-image{
+    display:none;
+    width: 30vw;
+    height: 30vw;
+    border:solid #9dc39c 3px;
+    float: right;
+    position:absolute;
+    right:35vw;
+    top:20vh;
+    z-index:4;
+    
+}
+.cancel{
+    display:none;
+    float: right;
+    position:absolute;
+    right:34vw;
+    top:21vh;
+    z-index:4;
+    width: 30px;
+    color:black;
+    background-color: #badab9;
+    
+}
 #bodytext{
     
     

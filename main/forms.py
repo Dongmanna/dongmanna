@@ -7,7 +7,7 @@ from django.forms import TextInput
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'item','link','category','limit','deadline',
+        fields = ['title', 'item','link','category','limit','deadline','image',
         'body'] #'image'
         labels = {
             'title':'제목',

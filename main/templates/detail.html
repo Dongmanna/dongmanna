@@ -88,15 +88,23 @@
                 <label for="people">정원</label>
                 <div class="input" type="text" readonly id="people" name="people"> {{ post.members.count }}/{{ post.limit }}</div>
             </div>
+            {% if post.image %}
+            <button class="image-button" onclick="viewImage()">이미지 보기</button> 
+            {% endif %}
+            
         </section>
+        
+        <!-- 이 부분 이미지 변수 확인---------------------------------------------------------------------------------------------------------------------------------------- -->
+        {% if post.image %}
+        <img class="content-image"src="{{ post.image.url}}" alt="img">
+        <button class="cancel" onclick="closeImage()">x</button>
+        {% endif %}
         <div class="input" type="text" readonly id="bodytext" name="bodytext" placeholder="본문 내용">{{ post.body }}</div>
 
-                
-        {% if post.image %}
-            <img src="{{ post.image.url }}"><br>
-        {% endif %}
-        <h3 id="part-text">참가자</h3>
+            
         
+        <h3 id="part-text">참가자</h3>
+
         <section class="member">
                         
                 
@@ -153,7 +161,17 @@
 
 
             </div>
-    
+    <script>
+        function viewImage(){
+            document.querySelector(".content-image").style.display="block";
+            document.querySelector(".cancel").style.display="block";
+        }
+
+        function closeImage(){
+            document.querySelector(".content-image").style.display="none";
+            document.querySelector(".cancel").style.display="none";
+        }
+    </script>
 </main>
 
 {% endblock %}
