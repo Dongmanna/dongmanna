@@ -7,6 +7,7 @@ from django.conf import settings
 class Profile(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	nickname = models.CharField(max_length=20)
+	# address는 일단 보류
 	address = models.CharField(max_length=50, blank=True, null=True)
 	my_image = ProcessedImageField(
 		blank = True,
