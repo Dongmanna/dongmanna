@@ -20,7 +20,7 @@
             <section>
                 <div class="phocontainer">
                     <div class="myimg">
-                        <div class="photo">
+                        
                             {% if user_info.profile.my_image %}
                             <img src="{{ user_info.profile.my_image.url }}" alt="{{ user_info.profile.my_image}}"
                                 width=150px, height=150px>
@@ -28,7 +28,7 @@
                             <img src="{% static 'main/img/profile.png' %}" alt="{{ user_info.profile.my_image}}"
                                 width=150px, height=150px>
                             {% endif %}
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="editprofile">

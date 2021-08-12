@@ -45,6 +45,23 @@ body {
   max-width: 800px;
   padding: 0 20px;
 }
+button{
+    margin-top:40px;
+    position:absolute;
+    right: 5%;
+    background-color: #fff;
+    border: solid #9dc39c;
+    border-radius: 2px;
+    color: #9dc39c;
+    cursor:pointer;
+    box-shadow: -0.4px -0.4px ;
+    padding: 5px;
+
+
+}
+button:active{
+    box-shadow: 1px 1px;
+}
 
 .container {
   border: 3px solid #fbfaf6;
@@ -97,10 +114,10 @@ body {
 
 <body>
   <a href="{% url 'home' 'All' %}">
-    <img class="logo" src="{% static 'main/img/logo.png' %}" alt="Logo">
+    <button>채팅방 나가기</button> 
 </a>
 
-<h2 style="margin-left: 3%; ">"{{room_details.post.title}}"의 채팅방</h2>
+<h2 style="margin-left: 3%;margin-top: 7% ">"{{room_details.post.title}}"의 채팅방</h2>
 
 
 

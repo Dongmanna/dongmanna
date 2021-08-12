@@ -42,22 +42,28 @@ section{
     align-content: space-around;
     justify-content: space-around;
 }
-
+img{
+    margin:auto;
+    display: block;
+    max-width:100%;
+    max-height:100%;
+    min-width:100%;
+    min-height:100%;
+}
 .myimg{
-    margin-top: 10%;
+    margin-top:10%;
+    display:flex;
+    align-items: center;
     overflow: hidden;
     width: 200px;
     height: 200px;
-    padding: 45px;
+    
     border-radius: 100%;
     background-color: #fff;
     border: 2.7px solid #9dc39c;
 }
 
-.photo{
-    width:150px;
-    height:150px;
-}
+
 .info{
     margin-top: 15%;
     width: 250px;
