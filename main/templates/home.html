@@ -50,7 +50,7 @@
                     <!-- 검색결과 박스 -->
                     <div class="result-box">
                         
-                        {% if posts_list %}
+                        
                         {% if posts_list %}
             {% for post in posts_list %}
             <div class="details">
@@ -63,7 +63,7 @@
                     <a href="{% url 'detail' pk=post.pk %}" class="in-result-box2">
                         <p class = "t">{{ post.title }}</p>
                         <p class = "a">{{ post.author }}</p>
-                        <p class = "i"> {{post.item}}</p>
+                        <p class = "i"> [{{post.item}}]</p>
                         <p class = "m">{{ post.members.count }}/{{ post.limit}}</p>
                     </a>
                 </div>
@@ -129,5 +129,5 @@
 
     </main>
 </body>
-{% endblock %}
 
+{% endblock %}
