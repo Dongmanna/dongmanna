@@ -7,6 +7,7 @@ from accounts.models import Profile
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFit
 
+
 class Post(models.Model):
     objects = models.Manager()
     author = models.ForeignKey(Profile, blank=True, null=True,
@@ -26,7 +27,9 @@ class Post(models.Model):
         default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
     link = models.URLField(max_length=300, blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
-    members = models.ManyToManyField(Profile, blank=True, related_name='members_post')
+    members = models.ManyToManyField(
+        Profile, blank=True, related_name='members_post')
+    # 사진 1개 받기
     image = ProcessedImageField(
     		blank = True,
         	upload_to = 'post/images',
@@ -39,4 +42,13 @@ class Post(models.Model):
         return self.title
 
 
-
+# 사진 여러개 받기
+# class Images(models.Models):
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     image = ProcessedImageField(
+#         blank=True,
+#         upload_to='post/images',
+#         processors=[ResizeToFit(300, 300)],
+#         format='JPEG',
+#         options={'quality': 90},
+#     )

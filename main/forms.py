@@ -1,14 +1,13 @@
 # main/forms.py
 from django import forms
 from .models import Post
-from django.forms import TextInput
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'item','link','category','limit','deadline','image',
-        'body'] #'image'
+        fields = ['title', 'item','link','category','limit','deadline',
+        'body', 'image']
         labels = {
             'title':'제목',
             'category':'카테고리',
@@ -16,7 +15,8 @@ class PostForm(forms.ModelForm):
             'item':'품목',
             'limit':'모집인원',
             'link':'링크',
-            'deadline':'마감기한'
+            'deadline':'마감기한',
+            'image':'사진'
         }
 
 
