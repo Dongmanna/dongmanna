@@ -5,7 +5,7 @@ const carousel = document.querySelector('.carousel');
 
 
 let index = 0; 
-for (let pr=1;pr<4;pr++){
+for (let pr=1;pr<3;pr++){
     prevButton[pr-1].addEventListener('click', () => { 
         let imageWidth = document.querySelector('.big-box').offsetWidth;
         if (index === 0) return;
@@ -15,7 +15,7 @@ for (let pr=1;pr<4;pr++){
 }
 
 
-for (let a = 1 ;a<4;a++) {
+for (let a = 1 ;a<3;a++) {
     console.log(nextButton[a-1]);
     nextButton[a-1].addEventListener('click', () => { 
     let imageWidth = document.querySelector('.big-box').offsetWidth;

@@ -32,7 +32,7 @@ header{
 }
 a:visited{
     color:black;
-    
+    text-decoration:none;
 }
 
 .logo{
@@ -44,7 +44,8 @@ a:visited{
 .profile-img{
     width: 3vw;
     height: 5vh;
-    
+    margin: auto;
+    display: block;
     
 }
 .profile-container{
@@ -98,4 +99,11 @@ header button{
     border:none;
     
     background-color: inherit;
+}
+
+@media screen and (max-width: 1340px){
+body{
+    overflow: overlay;
+    min-width: 1280px;
+}
 }
