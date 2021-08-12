@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 
-# 채팅방에 입장하기 위해 username, room_details를 받아 room.html로 넘겨준다
+# 채팅방에 입장하기 위해 room_number를 받아 chat room으로 이동한다
 @login_required
 def room(request, room_number):
     post = get_object_or_404(Post, pk=room_number)
