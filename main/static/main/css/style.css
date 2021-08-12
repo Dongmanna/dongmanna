@@ -172,11 +172,9 @@ a {
     height: fit-content;
     width:45px;
     margin-left:2%;
-    margin-right: 10%;
     text-align: center;
     position: relative;
     top:10%;
-
 }
 .detil_preview{
     height: fit-content;
@@ -250,8 +248,26 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
+
+.in-result-box{
+    width:10%;
+}
+
 .inline-texts{
     display: inline-block;
+}
+
+.chat_preview{
+    height: fit-content;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail_cate2{
+    margin-top:0;
+    width:10%;
 }
 
 .my-room p{
@@ -263,11 +279,14 @@ a {
 .m{
     margin-left:40px;
 }
-.detail_cate button{
+
+
+.detail_cate2 button{
     width:75px;
+    height:35px;
     margin-top: 3px;
     margin-bottom: 50px;
-    height:70%;
+    margin-right:5px;
     font-size: 6px;
     text-align: center;
 }

@@ -83,7 +83,7 @@
             {% if posts_participated %}
             {% for post in posts_participated %}
             <div class="my-room">
-                <div class="detail_preview">
+                <div class="chat_preview">
                     <a href="{% url 'detail' pk=post.pk %}" class="in-result-box3">
                         <p class="c">{{ post.category }}</p>
                         <p class="t">{{ post.title }}</p>
@@ -92,7 +92,7 @@
                         <p class="m">{{ post.members.count }}/{{ post.limit}}</p>
                     </a>
                 </div>
-                <div class="detail_cate">
+                <div class="detail_cate2">
                     <a href="{% url 'chat:room' room_number=post.pk %}" class="in-result-box">
                         <button>채팅방 입장</button>
                     </a>
