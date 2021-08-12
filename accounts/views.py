@@ -18,7 +18,8 @@ def signup_view(request):
             # user 저장
             user = form.save()
             # profile 생성
-            person = Profile.objects.create(user=user, address=request.POST['address'], nickname=request.POST['nickname'])
+            person = Profile.objects.create(user=user, nickname=request.POST['nickname'])
+            # person = Profile.objects.create(user=user, address=request.POST['address'], nickname=request.POST['nickname'])
             person.save()
             # 자동 login
             login(request, user)

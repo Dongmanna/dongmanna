@@ -67,7 +67,9 @@ body{
 }
 
 
-
+a {
+    text-decoration: none;
+}
 .first{
     margin:0 auto;
     margin-top: 15vh;
@@ -125,10 +127,8 @@ body{
     overflow: scroll;
     border:solid #9dc39c;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-
+    justify-content: flex-start;
 }
 .result-box::-webkit-scrollbar {
     width: 6px;
@@ -137,25 +137,50 @@ body{
 }
 .result-box::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    
     background-color: #9dc39c;
 }
-.in-result-box{
-    display:flex;
-    align-items: center;
-    margin: 10px;
-    height:13%;
-    width:90%;
-    border: solid #9dc39c;
-    border-radius:5px;
-}
-.in-result-box b{
-    margin: 0 30px 0 10px;
-    font-size: 15px;;
-    color: rgb(81, 168, 81);
-   
+
+.in-result-box2{
+    display: flex;
 }
 
+.in-result-box3{
+    margin-left:1.5%;
+}
+
+.details{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top:1.5%;
+    border: solid #9dc39c;
+    border-radius: 20px;
+}
+
+.in-result{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.in-result p{
+    width:125px;
+    margin-left:40px;
+}
+
+.detail_cate{
+    height: fit-content;
+    width:45px;
+    margin-left:2%;
+    text-align: center;
+    position: relative;
+    top:10%;
+}
+.detil_preview{
+    height: fit-content;
+    width: 400px;
+    text-align: center;
+}
 .second{
     width:70vw;
     margin:0 auto;
@@ -165,7 +190,6 @@ body{
     border-radius:4px;
     display:flex;
     flex-direction: column;
-    
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding-top: 3%
@@ -180,11 +204,10 @@ body{
 
 .my-group{
     background-color: inherit;
-    width:70%;
+    width:85%;
     height: 50vh;
     border:solid #fbfaf6;
     overflow:scroll;
-    
     margin-bottom: 40px;
     border-radius: 10px;
 
@@ -208,28 +231,62 @@ body{
 
 .my-room{
     margin: 3% auto;
-    
-    width: 80%;
+    width: 90%;
     height: 12%;
     background-color: #fff;
-    
     border: solid #fbfaf6 2px;
     border-radius:5px;
     display: flex;
+    flex-wrap: wrap;
     text-align:end;
     justify-content:space-around;
     align-items: center;
-    
 }
+
+.in-result-box3{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.in-result-box{
+    width:10%;
+}
+
 .inline-texts{
     display: inline-block;
-
 }
-.my-room button{
+
+.chat_preview{
+    height: fit-content;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail_cate2{
+    margin-top:0;
+    width:10%;
+}
+
+.my-room p{
+    margin-bottom:50px;
+    width: 130px;
+    text-align:left;
+}
+
+.m{
+    margin-left:40px;
+}
+
+
+.detail_cate2 button{
+    width:75px;
+    height:35px;
     margin-top: 3px;
-    margin-bottom: 3px;
-    
-    height:70%;
+    margin-bottom: 50px;
+    margin-right:5px;
     font-size: 6px;
     text-align: center;
 }
@@ -237,7 +294,6 @@ body{
     margin: 0 30px 0 10px;
     font-size: 15px;;
     color: rgb(81, 168, 81);
-   
 }
 .third{
     border-radius:4px;
