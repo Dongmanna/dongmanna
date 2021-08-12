@@ -104,6 +104,6 @@ header button{
 @media screen and (max-width: 1340px){
 body{
     overflow: overlay;
-    min-width: 1280px;
+    /* min-width: 1280px; */
 }
 }
