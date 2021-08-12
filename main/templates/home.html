@@ -35,7 +35,7 @@
                             <button type="submit" value="Submit" > 검색 </button>  
                         </div>
                     </form>
-                    <a href="{% url 'new'  %}"><button style="position:absolute; right:20%; ">글쓰러 가기</button></a>
+                    <a href="{% url 'new'  %}"><button style="position:absolute; right:12%; ">글쓰러 가기</button></a>
 
                     
                         <!-- 카테고리 -->
@@ -83,12 +83,15 @@
                                 <b>{{ post.category }}</b> 
                                 
                                 {{ post.title }}&nbsp;&nbsp;
+
                                 {{ post.author }} &nbsp;&nbsp;
+
                                 {{ post.item }} &nbsp;&nbsp;&nbsp;
+                                
                                 {{ post.members.count }}/{{ post.limit }}
                                 
                                 
-                                <div><a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div>
+                                <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a>
                                 
                             </div>
                             

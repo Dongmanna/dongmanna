@@ -91,11 +91,12 @@
         </section>
         <div class="input" type="text" readonly id="bodytext" name="bodytext" placeholder="본문 내용">{{ post.body }}</div>
 
-        <!-- 이미지는 일단...뺍시다... -->
-<!-- {% if post.image %}
-    <img src="{{ post.image.url }}"><br>
-{% endif %} -->
+                
+        {% if post.image %}
+            <img src="{{ post.image.url }}"><br>
+        {% endif %}
         <h3 id="part-text">참가자</h3>
+        
         <section class="member">
                         
                 
@@ -104,7 +105,7 @@
                     <div class="participant">
                         <div class = "memimg">
                             {% if member.my_image %}
-                            <img src='{{member.my_image.url}}' alt="myprofile" width=40px, height=40px>
+                            <img src='{{member.my_image.url}}' alt="myprofile" width=40px, height=40px style="margin:auto; min-width:100%; min-height:100%;">
                             {% else %}
                             <img src='{%static "main/img/profile.png"%}' alt="myprofile" width=40px, height=40px>
                             {% endif %}

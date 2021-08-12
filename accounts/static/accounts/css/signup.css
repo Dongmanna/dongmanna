@@ -12,43 +12,56 @@
     font-style: normal;
 }
 *{
-	box-sizing: border-box; 
+	box-sizing: border-box;
     /* font-family: 'S-CoreDream-5Medium'; */
-    
+
 }
 body{
     background-color: #fbfaf6;
 }
 .big-box{
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
     height: 70vh;
     position:relative;
-    width: 25%;
+    width: 27vw;
     margin: 10vh 37.5vw 0 37.5vw;
     background-color: #fbfaf9;
-    border: #9dc39c 4px;
+    border: #9dc39c 3px;
     border-style:solid;
     border-radius: 2px;
+
 }
 form{
     display: flex;
-    
-    transition: transform 0.4s;
-    
+    position:static;
+
+
 }
 .first{
-    height: 70vh;
+    height: 66vh;
     width: 25vw;
+    margin:1vw;
     background-color: inherit;
     padding: 40px;
+    border: #9dc39c 2px dotted;
+
 }
 h4{
     color: rgba(37, 37, 37, 0.336)
 }
-
+/* .prev{
+    float:right;
+    position:relative;
+    left:20px;
+}
 .next{
-    margin-left: 20px;
+    float:right;
+    position:relative;
+    right:20px;
+} */
+ .next {
+    margin-left:20px;
 }
 input{
     margin: 15px 0 0px 0 ;
@@ -57,7 +70,7 @@ input{
     border: 2.7px solid #9dc39c;
     border-radius: 3px;
     background-color: #fff;
-    
+
 
 }
 input:focus{
@@ -75,27 +88,48 @@ button{
     cursor:pointer;
     box-shadow: -0.4px -0.4px ;
     padding: 5px;
+
+
 }
 button:active{
     box-shadow: 1px 1px;
 }
 .second{
-    height: 70vh;
+    height: 66vh;
     width: 25vw;
+    margin:1vw;
     background-color: inherit;
     padding: 40px;
+    border: #9dc39c 2px dotted;
 }
 .third{
-    height: 70vh;
+    height: 66vh;
     width: 25vw;
+    margin:1vw;
     background-color: inherit;
     padding: 40px;
+    border: #9dc39c 2px dotted;
 }
 .fourth{
-    height: 70vh;
-    width: 23vw;
+    height: 66vh;
+    width: 25vw;
+    margin:1vw;
     background-color: inherit;
     padding: 40px;
-    text-align: center;
+    
+    border: #9dc39c 2px dotted;
+}
+.carousel{
+    transition:1.4s;
 }
 
+body{
+    overflow:hidden;
+}
+ #submit{
+    background-color: #dbf0dc;
+    border: solid #85c083;
+    border-radius: 2px;
+    color: #85c083;
+    font-size:20px; 
+ }
