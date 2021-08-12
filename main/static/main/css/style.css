@@ -143,10 +143,11 @@ a {
 .in-result-box2{
     display: flex;
 }
-p{
-    width: 150px;
-    text-align:left;
+
+.in-result-box3{
+    margin-left:1.5%;
 }
+
 .details{
     display: flex;
     justify-content: flex-start;
@@ -155,6 +156,18 @@ p{
     border: solid #9dc39c;
     border-radius: 20px;
 }
+
+.in-result{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.in-result p{
+    width:125px;
+    margin-left:40px;
+}
+
 .detail_cate{
     height: fit-content;
     width:45px;
@@ -193,11 +206,10 @@ p{
 
 .my-group{
     background-color: inherit;
-    width:70%;
+    width:85%;
     height: 50vh;
     border:solid #fbfaf6;
     overflow:scroll;
-    
     margin-bottom: 40px;
     border-radius: 10px;
 
@@ -221,27 +233,40 @@ p{
 
 .my-room{
     margin: 3% auto;
-    
-    width: 80%;
+    width: 90%;
     height: 12%;
     background-color: #fff;
-    
     border: solid #fbfaf6 2px;
     border-radius:5px;
     display: flex;
+    flex-wrap: wrap;
     text-align:end;
     justify-content:space-around;
     align-items: center;
-    
+}
+
+.in-result-box3{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .inline-texts{
     display: inline-block;
-
 }
-.my-room button{
+
+.my-room p{
+    margin-bottom:50px;
+    width: 130px;
+    text-align:left;
+}
+
+.m{
+    margin-left:40px;
+}
+.detail_cate button{
+    width:75px;
     margin-top: 3px;
-    margin-bottom: 3px;
-    
+    margin-bottom: 50px;
     height:70%;
     font-size: 6px;
     text-align: center;
@@ -250,7 +275,6 @@ p{
     margin: 0 30px 0 10px;
     font-size: 15px;;
     color: rgb(81, 168, 81);
-   
 }
 .third{
     border-radius:4px;
