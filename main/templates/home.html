@@ -83,12 +83,15 @@
                                 <b>{{ post.category }}</b> 
                                 
                                 {{ post.title }}&nbsp;&nbsp;
+
                                 {{ post.author }} &nbsp;&nbsp;
+
                                 {{ post.item }} &nbsp;&nbsp;&nbsp;
+                                
                                 {{ post.members.count }}/{{ post.limit }}
                                 
                                 
-                                <div><a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a></div>
+                                <a href="{% url 'chat:room' room_number=post.pk %}"><button>채팅방 입장</button></a>
                                 
                             </div>
                             
