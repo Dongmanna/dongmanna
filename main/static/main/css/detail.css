@@ -58,6 +58,9 @@ main{
 #location{
     width: 150px;
 }
+#link{
+    overflow:hidden;
+}
 #item{
     width:150px;
 }
@@ -83,13 +86,13 @@ input::placeholder{
 }
 .content-image{
     display:none;
-    width: 30vw;
-    height: 30vw;
+    max-width: 40vw;
+    max-height: 40vw;
     border:solid #9dc39c 3px;
     float: right;
     position:absolute;
     right:35vw;
-    top:20vh;
+    top:30vh;
     z-index:4;
     
 }
@@ -98,7 +101,7 @@ input::placeholder{
     float: right;
     position:absolute;
     right:34vw;
-    top:21vh;
+    top:31vh;
     z-index:4;
     width: 30px;
     color:black;
